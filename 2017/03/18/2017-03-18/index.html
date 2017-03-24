@@ -3,15 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>&#39;少用for循环，几个有用的遍历函数&#39; | Savill blog</title>
+  <title>&#39;少用for循环，几个有用的ECMAScript5迭代函数&#39; | Savill blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="article">
-<meta property="og:title" content="'少用for循环，几个有用的遍历函数'">
-<meta property="og:url" content="http://yoursite.com/2017/03/18/少用for循环，几个有用的遍历函数/index.html">
+  <meta name="description" content="前言我们写程序的时候，遇到需要操作数组数据的时候，喜欢使用for循环，当代码量上去了之后，for循环用多了，感觉增加了代码量，且参数定义不好的情况下可以会出现网页性能的问题；所以来总结下几个ECMAScript5为数组定义的几个迭代方法，使用上后为自己去掉for循环菜鸟标配∧_∧。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="'少用for循环，几个有用的ECMAScript5迭代函数'">
+<meta property="og:url" content="http://yoursite.com/2017/03/18/2017-03-18/index.html">
 <meta property="og:site_name" content="Savill blog">
-<meta property="og:updated_time" content="2017-03-18T08:52:18.881Z">
+<meta property="og:description" content="前言我们写程序的时候，遇到需要操作数组数据的时候，喜欢使用for循环，当代码量上去了之后，for循环用多了，感觉增加了代码量，且参数定义不好的情况下可以会出现网页性能的问题；所以来总结下几个ECMAScript5为数组定义的几个迭代方法，使用上后为自己去掉for循环菜鸟标配∧_∧。">
+<meta property="og:updated_time" content="2017-03-24T04:03:49.608Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="'少用for循环，几个有用的遍历函数'">
+<meta name="twitter:title" content="'少用for循环，几个有用的ECMAScript5迭代函数'">
+<meta name="twitter:description" content="前言我们写程序的时候，遇到需要操作数组数据的时候，喜欢使用for循环，当代码量上去了之后，for循环用多了，感觉增加了代码量，且参数定义不好的情况下可以会出现网页性能的问题；所以来总结下几个ECMAScript5为数组定义的几个迭代方法，使用上后为自己去掉for循环菜鸟标配∧_∧。">
   
     <link rel="alternative" href="/atom.xml" title="Savill blog" type="application/atom+xml">
   
@@ -225,11 +228,11 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-少用for循环，几个有用的遍历函数" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-2017-03-18" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/03/18/少用for循环，几个有用的遍历函数/" class="article-date">
-      <time datetime="2017-03-18T08:52:18.000Z" itemprop="datePublished">2017-03-18</time>
+      <a href="/2017/03/18/2017-03-18/" class="article-date">
+      <time datetime="2017-03-18T09:17:30.000Z" itemprop="datePublished">2017-03-18</time>
 </a>
     </div>
   
@@ -242,7 +245,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      &#39;少用for循环，几个有用的遍历函数&#39;
+      &#39;少用for循环，几个有用的ECMAScript5迭代函数&#39;
     </h1>
   
 
@@ -259,7 +262,16 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>我们写程序的时候，遇到需要操作数组数据的时候，喜欢使用for循环，当代码量上去了之后，for循环用多了，感觉增加了代码量，且参数定义不好的情况下可以会出现网页性能的问题；<br>所以来总结下几个ECMAScript5为数组定义的几个迭代方法，使用上后为自己去掉for循环菜鸟标配∧_∧。<br><a id="more"></a></p>
+<h3 id="1-map"><a href="#1-map" class="headerlink" title="1. map"></a>1. map</h3><p>map函数可以用来遍历数组，它支持一个回调函数作为它的参数，会调函数拥有三个参数，分别是被遍历数组的每一项的值value，该值在数组中的索引index，及数组的本身Arr；<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">3</span>,<span class="number">6</span>,<span class="number">8</span>,<span class="number">9</span>]</div><div class="line">arr.map(<span class="function"><span class="keyword">function</span>(<span class="params">value, index, arr</span>)</span>&#123;</div><div class="line"></div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<p>可以对数组的每一个元素调用定义的回调函数并返回包含结果的数组，原数组保存不变。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">3</span>,<span class="number">6</span>,<span class="number">8</span>,<span class="number">9</span>]</div><div class="line">arr.map(<span class="function"><span class="keyword">function</span>(<span class="params">value, index, arr</span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span>  value+<span class="number">3</span>；</div><div class="line">&#125;)</div><div class="line"></div><div class="line"><span class="comment">//运行结果</span></div><div class="line">[<span class="number">4</span>,<span class="number">6</span>,<span class="number">9</span>,<span class="number">11</span>,<span class="number">12</span>]</div></pre></td></tr></table></figure></p>
+<h3 id="2-forEach"><a href="#2-forEach" class="headerlink" title="2. forEach"></a>2. forEach</h3><p>forEach 类似 上面的map函数，默认都是function类型，function回调支持3个参数，第1个是遍历的数组内容；第2个是对应的数组索引，第3个是数组本身。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">3</span>,<span class="number">6</span>,<span class="number">8</span>,<span class="number">9</span>]</div><div class="line">arr.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">value, index, arr</span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span>  <span class="built_in">console</span>.log(value+<span class="number">1</span>)；</div><div class="line">&#125;)</div><div class="line"></div><div class="line"><span class="comment">//运行结果会分别输出</span></div><div class="line"><span class="number">2</span>；<span class="number">4</span>；<span class="number">7</span>；<span class="number">9</span>；<span class="number">10</span></div></pre></td></tr></table></figure></p>
+<p>和map函数不一样的地方是结果没有返回数组，但原数组还会保持不变。</p>
+<h3 id="3-filter"><a href="#3-filter" class="headerlink" title="3. filter"></a>3. filter</h3><p>filter过滤函数，筛选出数组中符合条件的项，组成新数组。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">3</span>,<span class="number">6</span>,<span class="number">8</span>,<span class="number">9</span>]</div><div class="line">arr.filter(<span class="function"><span class="keyword">function</span>(<span class="params">value, index, arr</span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> value &gt; <span class="number">3</span> ；</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="comment">//运行结果会分别输出</span></div><div class="line">[<span class="number">6</span>,<span class="number">8</span>,<span class="number">9</span>]</div></pre></td></tr></table></figure></p>
+<h3 id="4-reduce"><a href="#4-reduce" class="headerlink" title="4. reduce"></a>4. reduce</h3><p>reduce函数，是让数组中的前项和后项做某种计算，并累计最终值，回调函数的四个参数分别是上一项计算后的结果，当前项，当前项的索引值，数组本身<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</div><div class="line">arr.reduce(<span class="function"><span class="keyword">function</span>(<span class="params">x, y, index,arr</span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> x+y ；</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="comment">//运行结果会分别输出</span></div><div class="line"><span class="number">15</span></div></pre></td></tr></table></figure></p>
+<h3 id="5-every"><a href="#5-every" class="headerlink" title="5. every"></a>5. every</h3><p>检测数组中的每一项是否符合条件<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</div><div class="line">arr.every(<span class="function"><span class="keyword">function</span>(<span class="params">value,index,arr</span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> value &gt; <span class="number">3</span>；</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="comment">//运行结果会分别输出</span></div><div class="line"><span class="comment">//全部满足才会true</span></div><div class="line"><span class="literal">false</span></div></pre></td></tr></table></figure></p>
+<h3 id="6-some"><a href="#6-some" class="headerlink" title="6. some"></a>6. some</h3><p>检测数组中是否有某些项符合条件<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</div><div class="line">arr.some(<span class="function"><span class="keyword">function</span>(<span class="params">value,index,arr</span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> value &gt; <span class="number">3</span>；</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="comment">//运行结果会分别输出</span></div><div class="line"><span class="comment">//只要一个条件满足就会true</span></div><div class="line"><span class="literal">true</span></div></pre></td></tr></table></figure></p>
+
       
       
         <div class="page-reward">
@@ -313,13 +325,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2017/03/18/少用for循环，几个有用的遍历函数/">&#39;少用for循环，几个有用的遍历函数&#39;</a></p>
+        <p><span>本文标题:</span><a href="/2017/03/18/2017-03-18/">&#39;少用for循环，几个有用的ECMAScript5迭代函数&#39;</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Savill W 的个人博客">Savill W</a></p>
-        <p><span>发布时间:</span>2017年03月18日 - 16时52分</p>
-        <p><span>最后更新:</span>2017年03月18日 - 16时52分</p>
+        <p><span>发布时间:</span>2017年03月18日 - 17时17分</p>
+        <p><span>最后更新:</span>2017年03月24日 - 12时03分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2017/03/18/少用for循环，几个有用的遍历函数/" title="&#39;少用for循环，几个有用的遍历函数&#39;">http://yoursite.com/2017/03/18/少用for循环，几个有用的遍历函数/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/03/18/少用for循环，几个有用的遍历函数/　　作者: Savill W" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2017/03/18/2017-03-18/" title="&#39;少用for循环，几个有用的ECMAScript5迭代函数&#39;">http://yoursite.com/2017/03/18/2017-03-18/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/03/18/2017-03-18/　　作者: Savill W" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -335,7 +347,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-map"><span class="toc-number">1.0.1.</span> <span class="toc-text">1. map</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-forEach"><span class="toc-number">1.0.2.</span> <span class="toc-text">2. forEach</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-filter"><span class="toc-number">1.0.3.</span> <span class="toc-text">3. filter</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-reduce"><span class="toc-number">1.0.4.</span> <span class="toc-text">4. reduce</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-every"><span class="toc-number">1.0.5.</span> <span class="toc-text">5. every</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-some"><span class="toc-number">1.0.6.</span> <span class="toc-text">6. some</span></a></li></ol></li></ol></li></ol>
 </div>
 <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
@@ -383,7 +395,7 @@
     
       <div class="duoshuo" id="comments">
     <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="2017/03/18/少用for循环，几个有用的遍历函数/" data-title="&#39;少用for循环，几个有用的遍历函数&#39;" data-url="http://yoursite.com/2017/03/18/少用for循环，几个有用的遍历函数/"></div>
+    <div class="ds-thread" data-thread-key="2017/03/18/2017-03-18/" data-title="&#39;少用for循环，几个有用的ECMAScript5迭代函数&#39;" data-url="http://yoursite.com/2017/03/18/2017-03-18/"></div>
     <!-- 多说评论框 end -->
     <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
     <script type="text/javascript">
@@ -413,7 +425,7 @@
             <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
     </div>
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/03/18/少用for循环，几个有用的遍历函数/">'少用for循环，几个有用的遍历函数'</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/03/18/2017-03-18/">'少用for循环，几个有用的ECMAScript5迭代函数'</a></li></ul>
     <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
     <script>
         $(".post-list").addClass("toc-article");
