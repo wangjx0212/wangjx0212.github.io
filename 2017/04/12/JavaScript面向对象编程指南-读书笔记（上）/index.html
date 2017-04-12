@@ -1,0 +1,823 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="前言《JavaScript 面向对象编程指南》，这本书风格轻松易懂，原型这一块讲的透彻 ，介绍了12种的继承方式。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript面向对象编程指南--读书笔记（上）">
+<meta property="og:url" content="http://yoursite.com/2017/04/12/JavaScript面向对象编程指南-读书笔记（上）/index.html">
+<meta property="og:site_name" content="Savill blog">
+<meta property="og:description" content="前言《JavaScript 面向对象编程指南》，这本书风格轻松易懂，原型这一块讲的透彻 ，介绍了12种的继承方式。">
+<meta property="og:updated_time" content="2017-04-12T10:33:30.493Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScript面向对象编程指南--读书笔记（上）">
+<meta name="twitter:description" content="前言《JavaScript 面向对象编程指南》，这本书风格轻松易懂，原型这一块讲的透彻 ，介绍了12种的继承方式。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/04/12/JavaScript面向对象编程指南-读书笔记（上）/"/>
+
+
+
+
+
+  <title> JavaScript面向对象编程指南--读书笔记（上） | Savill blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Savill blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/12/JavaScript面向对象编程指南-读书笔记（上）/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Savill W">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/head.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Savill blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                JavaScript面向对象编程指南--读书笔记（上）
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-12T18:25:29+08:00">
+                2017-04-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>《JavaScript 面向对象编程指南》，这本书风格轻松易懂，原型这一块讲的透彻 ，介绍了12种的继承方式。</p>
+<a id="more"></a>
+<h2 id="第一章：面向对象的JavaScript"><a href="#第一章：面向对象的JavaScript" class="headerlink" title="第一章：面向对象的JavaScript"></a>第一章：面向对象的JavaScript</h2><h3 id="面向对象的程序设计"><a href="#面向对象的程序设计" class="headerlink" title="面向对象的程序设计"></a>面向对象的程序设计</h3><p>面向对象程序设计(oop)中最常用到的概念：</p>
+<ul>
+<li>对象、方法、属性</li>
+<li>类</li>
+<li>封装</li>
+<li>聚合</li>
+<li>重用与继承</li>
+<li>多态</li>
+</ul>
+<p>封装通常有两部分组成。</p>
+<ul>
+<li>相关的数据（用于存储数据）</li>
+<li>基于这些数据所能做的事情（多能调用的方法）</li>
+</ul>
+<p>通过继承可以实现代码的复用。</p>
+<h2 id="第二章：基本数据类型、数组、循环及条件表达式"><a href="#第二章：基本数据类型、数组、循环及条件表达式" class="headerlink" title="第二章：基本数据类型、数组、循环及条件表达式"></a>第二章：基本数据类型、数组、循环及条件表达式</h2><h3 id="基本数据类型"><a href="#基本数据类型" class="headerlink" title="基本数据类型"></a>基本数据类型</h3><ul>
+<li>数字 ——包括浮点数与整数，列如这些属于数字，1、100、3.14；</li>
+<li>字符窜 ——包括由任意数量字符组成的序列，例如：“a”、“one”、“one 2 three”；</li>
+<li>布尔值 ——包括true和false；</li>
+<li>undefined ——不存在的变量，或者声明未初始化的变量，值只有一个：undefined；</li>
+<li>null ——通常指没有或者是空值。</li>
+</ul>
+<p>JavaScript数据类型主要分为两个部分：</p>
+<ul>
+<li>基本数据类型；</li>
+<li>非基本类型（即对象）</li>
+</ul>
+<p>任何不属于基本数据类型的东西都属于对象。<br>可以使用查看类型操作符——typeof 查看某个变量或者值的类型是什么。</p>
+<h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><p>数组是一种数据存储的形式，数组的声明：<br>var a=[];<br>var a=[1,2,3];<br>数组的索引下标是从0开始的，并且按照每一个元素的位置依次递增<br>可通过方括号中的索引值访问数组元素，可存储任何类型的数据，包括另一个数组。</p>
+<h2 id="条件与循环表达式"><a href="#条件与循环表达式" class="headerlink" title="条件与循环表达式"></a>条件与循环表达式</h2><ul>
+<li>if条件表达式</li>
+<li>switch语句</li>
+<li>while、do-while、for，及for-in循环</li>
+</ul>
+<h2 id="第三章：函数"><a href="#第三章：函数" class="headerlink" title="第三章：函数"></a>第三章：函数</h2><h3 id="什么是函数"><a href="#什么是函数" class="headerlink" title="什么是函数"></a>什么是函数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">function sum(a, b) &#123;</div><div class="line">    var c=a+b;</div><div class="line">    return c;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>一般来说，函数声明通常是由下面几部分组成的：<br>1.关键词function；<br>2.函数名称，这里即sum；<br>3.函数需要的参数；<br>4.函数所要执行的代码块，称为函数体；<br>5.return 子句。函数通常有返回值，且只有一个，如要返回多个，可以可考虑放进一个数组。</p>
+<p>arguments：函数内建变量，接收的所有参数，结构类似数组，可通过索引进行运用。</p>
+<h3 id="预定义函数"><a href="#预定义函数" class="headerlink" title="预定义函数"></a>预定义函数</h3><ul>
+<li>parseInt();    // 接收任何输入值转换为整数型输出 ，记得定义第二个参数确定输出的是什么进制的数值，默认是十进制，例如，从日历中读日期，对于08这样的数值，如果不定义，会出现意想不到的结果。</li>
+<li>paseFlat( );  //  功能和parseInt( )差不多，它只支持将输入值转为十进制，因此该函数只有一个参数；可接受指数形式的数据，这一点和parseInt()不同。</li>
+<li>isNaN( );</li>
+<li>isFinite( );</li>
+<li>encodeURI( );</li>
+<li>decodeURI( );</li>
+<li>…</li>
+</ul>
+<h3 id="函数的作用域"><a href="#函数的作用域" class="headerlink" title="函数的作用域"></a>函数的作用域</h3><p>没有块作用域，只有函数作用域，“全局变量”指的是所有函数外的变量，与之对应的“局部变量”是指在某个函数中定义的变量。函数内的代码可以访问全局变量，反之不行。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">  var a=3;</div><div class="line">  function text()&#123;</div><div class="line">    alert(a);</div><div class="line">    var a=5;</div><div class="line">    alert(a);</div><div class="line">  &#125;</div><div class="line">text();</div></pre></td></tr></table></figure></p>
+<p>上面的例子，第一个alert 结果是undefined，第二个则为5；</p>
+<h3 id="函数也是数据"><a href="#函数也是数据" class="headerlink" title="函数也是数据"></a>函数也是数据</h3><p>在JavaScript中，函数也是数据，也就是说我们可以把函数赋值给一个变量，<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var f=function()&#123;</div><div class="line">    return 1;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>上面的这种定义方式也称为函数标识法。<br>function(){return 1} 是一种函数表达式，其可以被命名，称为命名函数表达式，所以以下是合法的，<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var f = function myFunc()&#123;</div><div class="line">   return 1;</div><div class="line"> &#125;</div></pre></td></tr></table></figure></p>
+<p>函数声明和函数命名函数表达式的差别表现在于他们的上下文，函数声明只出现在程序代码里(在另一个函数体中，或者在主程序中)</p>
+<h3 id="匿名函数和回调函数"><a href="#匿名函数和回调函数" class="headerlink" title="匿名函数和回调函数"></a>匿名函数和回调函数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var f=function(a)&#123;</div><div class="line">  return a;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>匿名函数即没有名字的函数，特别是它不被赋值给变量，单独使用的时候，通过匿名函数可以做些什么呢：</p>
+<ul>
+<li>可将匿名函数作为参数传给其他函数，，这样，接收函数就能利用我们传递的函数来完成某些事</li>
+<li>可以定义某些匿名函数进行某些一次性的任务</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"> function byTwo(a,b,c,callback)&#123;</div><div class="line">  var arr=[];</div><div class="line">  for(var i=0;i&lt;3;i++)&#123;</div><div class="line">    arr[i]=callback(arguments[i]*2);</div><div class="line">  &#125;</div><div class="line">  return arr;</div><div class="line">&#125;</div><div class="line">byTwo(1,2,3,function(a)&#123; return a+1 &#125;) //  输出 [3,5,7]</div></pre></td></tr></table></figure>
+<p>以上例子为匿名函数在回调函数中的用处，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">(function()&#123;</div><div class="line">    alert(&apos;box&apos;);</div><div class="line">&#125;)()</div></pre></td></tr></table></figure>
+<p>匿名函数在即时(自调)函数中作用，其最大的好处是不会产生任何的全局变量，其无法重复执行，所以适合执行一些一次性的或初始化的任务。</p>
+<h3 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h3><p>讨论闭包需要了解作用域的概念，<br>我们知道，JavaScript不存在大括号级的作用域，但它有函数作用域，也就是说函数内定义的所有变量在该函数外是不可见的，而在函数内可以访问的变量既来自它自身的作用域，可以来自其“父级”作用域，这样就形成了一条作用域链，该链的长度（深度）取决于我们的需要。</p>
+<p><strong>闭包#1</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">var a=&quot;global variable&quot;;</div><div class="line">var F=function()&#123;</div><div class="line">  var b=&quot;local variable&quot;;</div><div class="line">  var N=function()&#123;</div><div class="line">    var c=&quot;inner local&quot;</div><div class="line">    return b;</div><div class="line">  &#125;;</div><div class="line">return N;</div><div class="line">&#125;</div><div class="line">console.log(b)  //  undefined</div><div class="line">var inner= F();</div><div class="line">inner(); // local variable</div></pre></td></tr></table></figure></p>
+<p>函数F中包含局部变量b，因此后者在全局空间里是看不到的，N有自己的私有空间，但同时可以访问F()的空间和全局空间，所以b对于来它是可见得。因为F()是可以在全局空间被调用的，所以我们将它的返回值赋于另一个全局变量，从而生成可以访问F()私有空间的全局函数。</p>
+<p><strong>闭包#2</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">function F()&#123;</div><div class="line">  var arr=[],</div><div class="line">  for(var i=0;i&lt;3;i++)&#123;</div><div class="line">    arr[i]=function()&#123;</div><div class="line">      return i;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  return arr;</div><div class="line">&#125;</div><div class="line">F() // 输出 [3,3,3];</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">function F()&#123;</div><div class="line">  var arr=[],</div><div class="line">  for(var i=0;i&lt;3;i++)&#123;</div><div class="line">    arr[i]=(function(x)&#123;</div><div class="line">      return x;</div><div class="line">    &#125;)(i)</div><div class="line">  &#125;</div><div class="line">  return arr;</div><div class="line">&#125;</div><div class="line">F() // 输出 [3,3,3];</div></pre></td></tr></table></figure>
+<h1 id="第四章：对象"><a href="#第四章：对象" class="headerlink" title="第四章：对象"></a>第四章：对象</h1><p>这一章主要讲的是：</p>
+<ul>
+<li>如何创建并使用对象；</li>
+<li>什么是构造器对象；</li>
+<li>JavaScript中的内置对象及运用；</li>
+</ul>
+<p>事实上对象和数组的情况很相似，不同的是键值类型是自定义的，索引方式不再是数字，而是一些更友好的键名。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"> var hero=&#123;</div><div class="line">  breed: &apos;Turtle&apos;,</div><div class="line">  occupation: &apos;Ninja&apos;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>正如所见：</p>
+<ul>
+<li>一个用于表示该对象名的hero；</li>
+<li>与定义数组时所用的中括号[ ]不同的是使用{ }；</li>
+<li>中括号分割开的是组成该对象的元素（通常称为属性）；</li>
+<li>键/值之间使用冒号隔开</li>
+</ul>
+<p>对象的属性可以有函数，称之方法，<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"> var hero=&#123;</div><div class="line">  breed: &apos;Turtle&apos;,</div><div class="line">  occupation: &apos;Ninja&apos;，</div><div class="line">  getbreed: function()&#123;</div><div class="line">        return this.breed;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">// 可通过两种方式访问对象的属性</div><div class="line">hero.breed; // 方式一</div><div class="line">hero[&apos;breed&apos;]; // 方式二</div><div class="line">// 调用对象的方法和其他函数的方式相同，在指定的函数名后面加一对括号即可：</div><div class="line">hero.getbreed() ; </div><div class="line">hero[&apos;getbreed&apos;]();</div></pre></td></tr></table></figure></p>
+<h3 id="构造器函数"><a href="#构造器函数" class="headerlink" title="构造器函数"></a>构造器函数</h3><p>我们可以通过构造器函数的方式来创建对象，<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">function Hero()&#123;</div><div class="line">  this.occupation=&apos;Ninja&apos;;</div><div class="line">&#125;</div><div class="line"></div><div class="line">var hero=new Hero();</div><div class="line">hero.occupation   // &apos;Ninja&apos;</div></pre></td></tr></table></figure></p>
+<p>使用构造器创建对象，可以进行传参，可以利用同一个构造器创建不同的对象。<br><strong>构造器属性</strong><br>当创建对象时，同时也赋予该 对象一个特殊的属性—即构造函数属性(constructor property) ,该属性实际上是一个指向用于创建该对象的构造器函数的引用。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">hero.constructor //   &quot;function Hero()&#123;  this.occupation=&apos;Ninja&apos;;&#125;&quot;</div><div class="line">typeof(hero.constructor) // &quot;function&quot;</div></pre></td></tr></table></figure></p>
+<p><strong>instanceof操作符</strong><br>通过instanceof操作符可以测试一个对象是不是由某个构造器函数所创建的。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hero.instanceof.Hero // true</div></pre></td></tr></table></figure></p>
+<p><strong>返回对象的函数</strong><br>不使用new操作符调用构造函数创建对象以外，抛开new操作符，只用一般的函数来创建对象。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">function factory(name)&#123;</div><div class="line">    return &#123;</div><div class="line">        name:name</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">var o = faactory(&apos;jay&apos;);</div><div class="line">o.name // &apos;jay&apos;</div></pre></td></tr></table></figure></p>
+<p><strong>传递对象和比较对象</strong><br>对象的拷贝和传递，都是对象的引用，在引用上所做的任何改动，实际上都会影响它所引用的原对象。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">var a = &#123; num: 1 &#125;;</div><div class="line">var b = a;</div><div class="line">b.num; // 1</div><div class="line">b.num = 2;</div><div class="line">a.num; // 2</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">var a = &#123; num: 1 &#125;;</div><div class="line">var b = &#123; num: 1 &#125;;</div><div class="line">a === b; // fasle</div><div class="line">a == b; // fasle</div><div class="line">var c = a; </div><div class="line">c === a; // true</div></pre></td></tr></table></figure>
+<h3 id="内建对象"><a href="#内建对象" class="headerlink" title="内建对象"></a>内建对象</h3><ul>
+<li>Object</li>
+<li>Array</li>
+<li>Function</li>
+<li>Boolean</li>
+<li>Number</li>
+</ul>
+<p>#第五章：原型<br>本章涉及的话题</p>
+<ul>
+<li>介绍每个函数都拥有的prototype属性，而该属性所存储的就是原型对象</li>
+<li>如何为原型对象添加属性</li>
+<li>如何使用原型对象中的新增属性</li>
+<li><strong>proto</strong>介绍，该属性用于保存各对象原型的神秘链接</li>
+<li>原型方法介绍，包括isProtottypeOf()、hasOwnProprety()、propertyIsEnumerable()等 </li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"> function foo(a,b)&#123;</div><div class="line">  return a*b;</div><div class="line">&#125;</div><div class="line">foo.length; // 2</div><div class="line">foo.constructor; // function foo(a,b)&#123; return a*b; &#125;</div><div class="line">typeof foo.prototype; // object</div><div class="line">foo.prototype=&#123; &#125;; //  可以向添加属性和方法，对 foo不会有影响，当foo为构造函数时，其才会起作用</div></pre></td></tr></table></figure>
+<p>对于原型来说，最重要的一点是理解它的‘实时性’，在JavaScript中，几乎所有的对象都是靠传递引用的方式来进行传递的，所以我们所创建的每一个对象实例并没有属于自己的原型副本，可随时修改prototype属性，由同一构造器所创建的所有对象的prototype属性也会一起改变。</p>
+<p><strong>自身属性和原型属性</strong><br>当我们访问对象实例的某个属性时，JavaScript会遍历所有该对象所有属性，如果找到该属性后立即返回，如果没有找到，脚本引擎会继续去查询用于创建当前对象的构造器的原型。如果在原型中找到该实例会立即使用该属性。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">function Hero()&#123;</div><div class="line"> this.name = &apos;java&apos;;</div><div class="line">this.sex = &apos;man&apos;</div><div class="line">&#125;</div><div class="line">Hero.prototype.info=&apos;it&apos;;</div><div class="line">Hero.prototype.sex =&apos;woman&apos;;</div><div class="line">var hero = new Hero();</div><div class="line">hero.name ; // &apos;java&apos;</div><div class="line">hero.info ; // &apos;it&apos;</div><div class="line">hero.sex; // &apos;man&apos;</div><div class="line">hero.hasOwnProperty(&apos;sex&apos;) //  true;</div><div class="line">hero.hasOwnProperty(&apos;info&apos;) //  false;</div></pre></td></tr></table></figure></p>
+<p>当自身属性和原型属性同名时,自身的属性优先级高于原型属性，使用<br><strong>hasOwnProperty</strong>方法可以判断一个对象的属性时自身属性还是原型属性。</p>
+<p><strong>枚举属性</strong><br>for适合使用在数组上，for-in更适合对象，如果想获得某个对象的所有属性的类列表，可以使用for-in。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"> var params=&#123;</div><div class="line">  productid: 666,</div><div class="line">  section: &apos;products&apos;</div><div class="line">&#125;</div><div class="line">var url = &apos;https://example.org/page.php?&apos;,</div><div class="line">      i,</div><div class="line">      quert = [];</div><div class="line"></div><div class="line">for( i in params)&#123;</div><div class="line">  quert.push(i + &apos;=&apos; + params[i]);</div><div class="line">&#125;</div><div class="line">url += quert.join(&apos;&amp;&apos;) // url = &apos;https://example.org/page.php?productid=666&amp;section=products&apos;,</div></pre></td></tr></table></figure></p>
+<p>需要注意的细节：</p>
+<ul>
+<li>并不是所有的属性 for- in 循环都可以显示的，例如(数组) length、construction 属性就不会被显示，那些会显示的属性称为可枚举的，可通过<strong>propertyIsEnumerable</strong>方法来判断对象的某个属性是否可枚举。</li>
+<li>原型链中的各个原型属性也会被显示出来，当然前提是他们是可枚举的。</li>
+<li>对于所有的原型属性， <strong>propertyIsEnumerable</strong> 都会返回false</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line">function Fadget(name,color)&#123;</div><div class="line">  this.name = name;</div><div class="line">  this.color = color;</div><div class="line">  this.getName = function()&#123;</div><div class="line">    return this.name;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">Fadget.prototype.price = 10;</div><div class="line">Fadget.prototype.rating = 3;</div><div class="line"></div><div class="line">var newtoy = new Fadget(&apos;webcam&apos;,&apos;black&apos;);</div><div class="line">for( var prop in newtoy)&#123;</div><div class="line">  console.log(prop + &apos;=&apos; + newtoy[prop ])</div><div class="line">&#125;</div><div class="line">// name = name</div><div class="line">// name = name</div><div class="line">// getName = function()&#123;</div><div class="line">    return this.name;</div><div class="line">  &#125;</div><div class="line">// price  = 10</div><div class="line">// rating = 3</div><div class="line"></div><div class="line">// 使用hasOwnProperty对对象属性和原型属性做一个区分</div><div class="line">newtoy .hasOwnProperty(&apos;name &apos;); // true</div><div class="line">newtoy .hasOwnProperty(&apos;price &apos;); // false</div><div class="line"></div><div class="line">for(var porp in newtoy )&#123;</div><div class="line">  if(newtoy.hasOwnProperty(porp)) &#123;</div><div class="line">    console.log(porp + &apos;=&apos; +newtoy[porp] );</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">// name = name</div><div class="line">// name = name</div><div class="line">// getName = function()&#123;</div><div class="line">    return this.name;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">//propertyIsEnumerable,该方法会对所有的非内建对象属性返回true</div><div class="line">//而对于内建对象和方法来说，大部分都是不可枚举的，</div><div class="line">newtoy.propertyIsEnumerable(&apos;name &apos;)  // true</div><div class="line">newtoy.propertyIsEnumerable(&apos;constructor &apos;)  // false</div><div class="line"></div><div class="line">//任何原型链上的属性也是不可枚举的</div><div class="line">newtoy.propertyIsEnumerable(&apos;price &apos;)  // false</div><div class="line"></div><div class="line">// 但需要注意，如果propertyIsEnumerable（）调用的是来自原型链上的某个对象，那么该对象中的属性也是枚举的</div><div class="line">newtoy.constructor .prototype.propertyIsEnumerable(&apos;price &apos;)  // true</div></pre></td></tr></table></figure>
+<p>每个对象中都有<strong>isPrototypeOf()</strong>方法，这个方法会告诉我们当前对象是否是另一个对象的原型。<br><strong><strong>proto</strong></strong> IE 之类平台不存在，所以使用上存在不能夸平台，还有和prototype 并不等价的，它属于某个对象实例的属性，而后者是属于构造函数的。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/04/01/使用Vue-js-2-0d搭建单页应用-1/" rel="next" title="使用Vue.js 2.0搭建单页应用-环境安装">
+                <i class="fa fa-chevron-left"></i> 使用Vue.js 2.0搭建单页应用-环境安装
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/head.jpg"
+               alt="Savill W" />
+          <p class="site-author-name" itemprop="name">Savill W</p>
+           
+              <p class="site-description motion-element" itemprop="description">专注</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/wangjx0212" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/wang-jie-qian-27" target="_blank" title="Zhihu">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Zhihu
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.jianshu.com/users/f4d99cd19f0a/timeline" target="_blank" title="Jianshu">
+                  
+                    <i class="fa fa-fw fa-joomla"></i>
+                  
+                  Jianshu
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.douban.com/people/49346458/" target="_blank" title="Douban">
+                  
+                    <i class="fa fa-fw fa-dashcube"></i>
+                  
+                  Douban
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#第一章：面向对象的JavaScript"><span class="nav-number">1.1.</span> <span class="nav-text">第一章：面向对象的JavaScript</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#面向对象的程序设计"><span class="nav-number">1.1.1.</span> <span class="nav-text">面向对象的程序设计</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第二章：基本数据类型、数组、循环及条件表达式"><span class="nav-number">1.2.</span> <span class="nav-text">第二章：基本数据类型、数组、循环及条件表达式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本数据类型"><span class="nav-number">1.2.1.</span> <span class="nav-text">基本数据类型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数组"><span class="nav-number">1.3.</span> <span class="nav-text">数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#条件与循环表达式"><span class="nav-number">1.4.</span> <span class="nav-text">条件与循环表达式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第三章：函数"><span class="nav-number">1.5.</span> <span class="nav-text">第三章：函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是函数"><span class="nav-number">1.5.1.</span> <span class="nav-text">什么是函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#预定义函数"><span class="nav-number">1.5.2.</span> <span class="nav-text">预定义函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数的作用域"><span class="nav-number">1.5.3.</span> <span class="nav-text">函数的作用域</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数也是数据"><span class="nav-number">1.5.4.</span> <span class="nav-text">函数也是数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#匿名函数和回调函数"><span class="nav-number">1.5.5.</span> <span class="nav-text">匿名函数和回调函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#闭包"><span class="nav-number">1.5.6.</span> <span class="nav-text">闭包</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第四章：对象"><span class="nav-number">2.</span> <span class="nav-text">第四章：对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#构造器函数"><span class="nav-number">2.0.1.</span> <span class="nav-text">构造器函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内建对象"><span class="nav-number">2.0.2.</span> <span class="nav-text">内建对象</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Savill W</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
