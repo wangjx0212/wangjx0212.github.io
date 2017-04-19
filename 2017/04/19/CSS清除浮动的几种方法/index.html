@@ -87,19 +87,18 @@
 
 
 
-<meta name="description" content="前言如题，主要是记录下vue2的环境安装和配置。">
+<meta name="description" content="前言在WEB页面中，当容器的高度为auto时，且容器的内容中有浮动（float为left或right）的元素，容器的高度不能自动撑高以适应内容的高度，使得内容溢出容器外面影响布局，为了防止这个现象出现，而进行的CSS处理。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="使用Vue.js 2.0搭建单页应用-环境安装">
-<meta property="og:url" content="http://yoursite.com/2017/04/01/使用Vue-js-2-0d搭建单页应用-1/index.html">
+<meta property="og:title" content="CSS清除浮动的几种方法">
+<meta property="og:url" content="http://yoursite.com/2017/04/19/CSS清除浮动的几种方法/index.html">
 <meta property="og:site_name" content="Savill blog">
-<meta property="og:description" content="前言如题，主要是记录下vue2的环境安装和配置。">
-<meta property="og:image" content="http://yoursite.com/images/blog/createvue.PNG">
-<meta property="og:image" content="http://yoursite.com/images/blog/index.PNG">
-<meta property="og:updated_time" content="2017-04-10T10:16:32.010Z">
+<meta property="og:description" content="前言在WEB页面中，当容器的高度为auto时，且容器的内容中有浮动（float为left或right）的元素，容器的高度不能自动撑高以适应内容的高度，使得内容溢出容器外面影响布局，为了防止这个现象出现，而进行的CSS处理。">
+<meta property="og:image" content="http://yoursite.com/images/blog/float.PNG">
+<meta property="og:updated_time" content="2017-04-19T10:21:00.273Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="使用Vue.js 2.0搭建单页应用-环境安装">
-<meta name="twitter:description" content="前言如题，主要是记录下vue2的环境安装和配置。">
-<meta name="twitter:image" content="http://yoursite.com/images/blog/createvue.PNG">
+<meta name="twitter:title" content="CSS清除浮动的几种方法">
+<meta name="twitter:description" content="前言在WEB页面中，当容器的高度为auto时，且容器的内容中有浮动（float为left或right）的元素，容器的高度不能自动撑高以适应内容的高度，使得内容溢出容器外面影响布局，为了防止这个现象出现，而进行的CSS处理。">
+<meta name="twitter:image" content="http://yoursite.com/images/blog/float.PNG">
 
 
 
@@ -127,13 +126,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/04/01/使用Vue-js-2-0d搭建单页应用-1/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/04/19/CSS清除浮动的几种方法/"/>
 
 
 
 
 
-  <title> 使用Vue.js 2.0搭建单页应用-环境安装 | Savill blog </title>
+  <title> CSS清除浮动的几种方法 | Savill blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -252,7 +251,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/01/使用Vue-js-2-0d搭建单页应用-1/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/19/CSS清除浮动的几种方法/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Savill W">
@@ -273,7 +272,7 @@
             
             
               
-                使用Vue.js 2.0搭建单页应用-环境安装
+                CSS清除浮动的几种方法
               
             
           </h1>
@@ -288,8 +287,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-01T10:11:26+08:00">
-                2017-04-01
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-19T17:29:22+08:00">
+                2017-04-19
               </time>
             
 
@@ -324,18 +323,27 @@
       
 
       
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>如题，主要是记录下vue2的环境安装和配置。<a id="more"></a></p>
-<p>1.安装node.js，node.js的安装包和源码下载地址为：<a href="https://nodejs.org/en/download/" target="_blank" rel="external">https://nodejs.org/en/download/</a> ；<br>2.安装npm，新版的node里已经集成了npm，可通过 “npm -v”来测试是否成功安装，关于网速的问题，可以安装使用淘宝定制的镜像cnpm代替；<br>3.安装vue-cil,其实vue的脚手架工具，命令如下：</p>
-<pre><code>npm install -g vue-cli 
-</code></pre><p>参数-g为全局安装，所以这个命令只需要运行一次就可以了。</p>
-<p>接着使用webpack去项目模块打包，预处理，热加载，编译vue文件；关于webpack的碉堡特性，后续会有一篇专门的文章进行记录。</p>
-<pre><code>vue init webpack vue-myproject
-</code></pre><p><img src="/images/blog/createvue.PNG" alt="alt text" title="creatprejoct"></p>
-<pre><code>cd vue-myproject
-
-npm install
-</code></pre><p>接着使用，npm run dev在热加载中运行,浏览器会自动打开一个窗口，就可以看到实际的效果了。</p>
-<p><img src="/images/blog/index.PNG" alt="alt text" title="index"></p>
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>在WEB页面中，当容器的高度为auto时，且容器的内容中有浮动（float为left或right）的元素，容器的高度不能自动撑高以适应内容的高度，<br>使得内容溢出容器外面影响布局，为了防止这个现象出现，而进行的CSS处理。<br><a id="more"></a></p>
+<p>例如代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">.wrapper&#123;</div><div class="line">	border: 1px solid black;</div><div class="line">&#125;</div><div class="line">.left&#123;</div><div class="line">	width:500px;</div><div class="line">	height:300px;</div><div class="line">	border: 1px solid red;</div><div class="line">	float:left;</div><div class="line">&#125;</div><div class="line">.rigth&#123;</div><div class="line">	width:300px;</div><div class="line">	height:300px;</div><div class="line">	border: 1px solid yellow;</div><div class="line">	float:right;</div><div class="line">&#125;</div><div class="line">&lt;div class=&apos;wrapper&apos;&gt;</div><div class="line">	&lt;div class=&apos;left&apos;&gt;&lt;/div&gt;</div><div class="line">	&lt;div class=&apos;rigth&apos;&gt;&lt;/div&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure></p>
+<p><strong>容器没有包围浮动元素，浮动元素不占空间</strong></p>
+<p><img src="/images/blog/float.PNG" alt="alt text" title="creatprejoct"></p>
+<h3 id="清除浮动方法："><a href="#清除浮动方法：" class="headerlink" title="清除浮动方法："></a>清除浮动方法：</h3><p><strong>方法一</strong> ：使用带clear属性的空元素</p>
+<p>在浮动元素后使用一个空元素，并在css中赋予 .clear{ clear:both; }属性即可清理浮动。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">.wrapper&#123;</div><div class="line">	border: 1px solid black;</div><div class="line">&#125;</div><div class="line">.left&#123;</div><div class="line">	width:500px;</div><div class="line">	height:300px;</div><div class="line">	border: 1px solid red;</div><div class="line">	float:left;</div><div class="line">&#125;</div><div class="line">.rigth&#123;</div><div class="line">	width:300px;</div><div class="line">	height:300px;</div><div class="line">	border: 1px solid yellow;</div><div class="line">	float:right;</div><div class="line">&#125;</div><div class="line">.clear&#123;</div><div class="line">	clear:both;</div><div class="line">&#125;</div><div class="line">&lt;div class=&apos;wrapper&apos;&gt;</div><div class="line">	&lt;div class=&apos;left&apos;&gt;&lt;/div&gt;</div><div class="line">	&lt;div class=&apos;rigth&apos;&gt;&lt;/div&gt;</div><div class="line">	&lt;div class=&apos;clear&apos;&gt;&lt;/div&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
+<p><strong>优点</strong> ：简单，代码量少，浏览器兼容性好<br><strong>缺点</strong> : 需要添加大量无语义的html元素，代码不够优雅。</p>
+<p><strong>方法二</strong> ：使用CSS的overflow属性<br>给浮动元素的容器添加overflow:hidden或者overflow:auto，可以清除浮动，但在IE6中需要触发hasLayout</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">.wrapper&#123;</div><div class="line">	border: 1px solid black;</div><div class="line">	overflow:auto;</div><div class="line">	*zoom:1;</div><div class="line">&#125;</div><div class="line">.left&#123;</div><div class="line">	width:500px;</div><div class="line">	height:300px;</div><div class="line">	border: 1px solid red;</div><div class="line">	float:left;</div><div class="line">&#125;</div><div class="line">.rigth&#123;</div><div class="line">	width:300px;</div><div class="line">	height:300px;</div><div class="line">	border: 1px solid yellow;</div><div class="line">	float:right;</div><div class="line">&#125;</div><div class="line">&lt;div class=&apos;wrapper&apos;&gt;</div><div class="line">	&lt;div class=&apos;left&apos;&gt;&lt;/div&gt;</div><div class="line">	&lt;div class=&apos;rigth&apos;&gt;&lt;/div&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
+<p><strong>方法三</strong> ：给浮动的元素容器添加浮动</p>
+<p>不推荐，这样会使其整体浮动，影响布局</p>
+<p><strong>方法四</strong> ：使用邻接元素处理<br>什么都不做，给浮动元素后面的元素添加clear 属性，类似方法一</p>
+<p><strong>方法五</strong> ：使用CSS的伪元素:after</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">.wrapper&#123;</div><div class="line">	border: 1px solid black;</div><div class="line">&#125;</div><div class="line"></div><div class="line">.clearfix:after&#123;</div><div class="line">	content: &apos;&apos;;</div><div class="line">	display: block;</div><div class="line">	clear: both;</div><div class="line">	zoom:1</div><div class="line">&#125;</div><div class="line"></div><div class="line">.left&#123;</div><div class="line">	width:500px;</div><div class="line">	height:300px;</div><div class="line">	border: 1px solid red;</div><div class="line">	float:left;</div><div class="line">&#125;</div><div class="line">.rigth&#123;</div><div class="line">	width:300px;</div><div class="line">	height:300px;</div><div class="line">	border: 1px solid yellow;</div><div class="line">	float:right;</div><div class="line">&#125;</div><div class="line">&lt;div class=&apos;wrapper clearfix&apos;&gt;</div><div class="line">	&lt;div class=&apos;left&apos;&gt;&lt;/div&gt;</div><div class="line">	&lt;div class=&apos;rigth&apos;&gt;&lt;/div&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
+<p>通过css伪元素在容器的最后添加一个看不见的空格，并且赋予clear属性来清除浮动，为了兼容低版本IE，给这这个clearfix添加zoom:1；<br>触发haslayout,推荐使用此方法</p>
+<p>通过以上例子，可发现清除浮动的方法可分为两类：</p>
+<ol>
+<li>利用clear属性，</li>
+<li>触发浮动父元素的BFC（Block Formatting Contexts， 块级格式化上下文），使到该父元素可以包含浮动元素。</li>
+</ol>
 
       
     </div>
@@ -372,8 +380,8 @@ npm install
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/03/29/2017-03-29/" rel="next" title="CSS实现元素垂直居中的几个常用方法">
-                <i class="fa fa-chevron-left"></i> CSS实现元素垂直居中的几个常用方法
+              <a href="/2017/04/12/JavaScript面向对象编程指南-读书笔记/" rel="next" title="JavaScript面向对象编程指南--读书笔记">
+                <i class="fa fa-chevron-left"></i> JavaScript面向对象编程指南--读书笔记
               </a>
             
           </div>
@@ -381,10 +389,6 @@ npm install
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/04/12/JavaScript面向对象编程指南-读书笔记/" rel="prev" title="JavaScript面向对象编程指南--读书笔记">
-                JavaScript面向对象编程指南--读书笔记 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -533,7 +537,7 @@ npm install
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#清除浮动方法："><span class="nav-number">1.0.1.</span> <span class="nav-text">清除浮动方法：</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
