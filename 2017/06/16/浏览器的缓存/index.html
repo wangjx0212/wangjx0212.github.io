@@ -87,19 +87,20 @@
 
 
 
-<meta name="description" content="前言如题，主要是记录下vue2的环境安装和配置。">
+<meta name="description" content="前言Http中具有缓存功能的是浏览器缓存，以及缓存代理服务器。其指的是当Web请求抵达缓存时，如果代理服务器或者客户端浏览器磁盘内保存有的资源副本，就可以直接读取加载,减少对源服务器的访问。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="使用Vue.js 2.0搭建单页应用-环境安装">
-<meta property="og:url" content="http://yoursite.com/2017/04/01/使用Vue-js-2-0d搭建单页应用-1/index.html">
+<meta property="og:title" content="HTTP的缓存策略">
+<meta property="og:url" content="http://yoursite.com/2017/06/16/浏览器的缓存/index.html">
 <meta property="og:site_name" content="Savill blog">
-<meta property="og:description" content="前言如题，主要是记录下vue2的环境安装和配置。">
-<meta property="og:image" content="http://yoursite.com/images/blog/createvue.PNG">
-<meta property="og:image" content="http://yoursite.com/images/blog/index.PNG">
-<meta property="og:updated_time" content="2017-04-10T10:16:32.010Z">
+<meta property="og:description" content="前言Http中具有缓存功能的是浏览器缓存，以及缓存代理服务器。其指的是当Web请求抵达缓存时，如果代理服务器或者客户端浏览器磁盘内保存有的资源副本，就可以直接读取加载,减少对源服务器的访问。">
+<meta property="og:image" content="http://yoursite.com/images/blog/httpCache/http-cache1.png">
+<meta property="og:image" content="http://yoursite.com/images/blog/httpCache/http-cache2.png">
+<meta property="og:image" content="http://yoursite.com/images/blog/httpCache/http-cache3.png">
+<meta property="og:updated_time" content="2017-06-16T10:56:15.800Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="使用Vue.js 2.0搭建单页应用-环境安装">
-<meta name="twitter:description" content="前言如题，主要是记录下vue2的环境安装和配置。">
-<meta name="twitter:image" content="http://yoursite.com/images/blog/createvue.PNG">
+<meta name="twitter:title" content="HTTP的缓存策略">
+<meta name="twitter:description" content="前言Http中具有缓存功能的是浏览器缓存，以及缓存代理服务器。其指的是当Web请求抵达缓存时，如果代理服务器或者客户端浏览器磁盘内保存有的资源副本，就可以直接读取加载,减少对源服务器的访问。">
+<meta name="twitter:image" content="http://yoursite.com/images/blog/httpCache/http-cache1.png">
 
 
 
@@ -127,13 +128,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/04/01/使用Vue-js-2-0d搭建单页应用-1/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/06/16/浏览器的缓存/"/>
 
 
 
 
 
-  <title> 使用Vue.js 2.0搭建单页应用-环境安装 | Savill blog </title>
+  <title> HTTP的缓存策略 | Savill blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -252,7 +253,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/01/使用Vue-js-2-0d搭建单页应用-1/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/16/浏览器的缓存/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Savill W">
@@ -273,7 +274,7 @@
             
             
               
-                使用Vue.js 2.0搭建单页应用-环境安装
+                HTTP的缓存策略
               
             
           </h1>
@@ -288,8 +289,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-01T10:11:26+08:00">
-                2017-04-01
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-16T11:15:38+08:00">
+                2017-06-16
               </time>
             
 
@@ -324,18 +325,83 @@
       
 
       
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>如题，主要是记录下vue2的环境安装和配置。<a id="more"></a></p>
-<p>1.安装node.js，node.js的安装包和源码下载地址为：<a href="https://nodejs.org/en/download/" target="_blank" rel="external">https://nodejs.org/en/download/</a> ；<br>2.安装npm，新版的node里已经集成了npm，可通过 “npm -v”来测试是否成功安装，关于网速的问题，可以安装使用淘宝定制的镜像cnpm代替；<br>3.安装vue-cil,其实vue的脚手架工具，命令如下：</p>
-<pre><code>npm install -g vue-cli 
-</code></pre><p>参数-g为全局安装，所以这个命令只需要运行一次就可以了。</p>
-<p>接着使用webpack去项目模块打包，预处理，热加载，编译vue文件；关于webpack的碉堡特性，后续会有一篇专门的文章进行记录。</p>
-<pre><code>vue init webpack vue-myproject
-</code></pre><p><img src="/images/blog/createvue.PNG" alt="alt text" title="creatprejoct"></p>
-<pre><code>cd vue-myproject
-
-npm install
-</code></pre><p>接着使用，npm run dev在热加载中运行,浏览器会自动打开一个窗口，就可以看到实际的效果了。</p>
-<p><img src="/images/blog/index.PNG" alt="alt text" title="index"></p>
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>Http中具有缓存功能的是浏览器缓存，以及缓存代理服务器。其指的是当Web请求抵达缓存时，如果代理服务器或者客户端浏览器磁盘内保存有的资源副本，就可以直接读取加载,减少<br>对源服务器的访问。<br><a id="more"></a></p>
+<h3 id="缓存的优点"><a href="#缓存的优点" class="headerlink" title="缓存的优点"></a>缓存的优点</h3><blockquote>
+<ol>
+<li>减少冗余的数据传输；</li>
+<li>减少服务器的负担；</li>
+<li>加快客户端加载网页的速度，节省通信流量和通信时间。</li>
+</ol>
+</blockquote>
+<p>浏览器一般缓存图片、css、js等静态文件，因为这些文件的更新频率相对较低，合理利用缓存对网站的性能提升有很大提升</p>
+<h3 id="缓存的分类"><a href="#缓存的分类" class="headerlink" title="缓存的分类"></a>缓存的分类</h3><p>Http缓存分为两部分：</p>
+<blockquote>
+<ol>
+<li>本地缓存（强缓存、彻底缓存）；</li>
+<li>缓存协商；</li>
+</ol>
+</blockquote>
+<p>当本地缓存不生效时会启用缓存协商。</p>
+<p><img src="/images/blog/httpCache/http-cache1.png" alt="http-cache" title="http-cache"></p>
+<h3 id="本地缓存"><a href="#本地缓存" class="headerlink" title="本地缓存"></a>本地缓存</h3><p>本地缓存时指浏览器请求资源时，命中了浏览器本地的缓存资源，它并不会发送真正的请求给服务器，执行过程：</p>
+<blockquote>
+<ol>
+<li>第一次客户端浏览器发送请求服务器时，这个时候的浏览器还没有本地缓存副本，源服务器返回资源给浏览器，响应码是200 OK，浏览器收到资源后，把资源和对应的响应头一起缓存下来；</li>
+<li>第二次浏览器准备发送请求给服务器时候，浏览器会先检查上一次服务器返回的响应头信息中的Cache-Control，判断是否命中本地缓存；</li>
+<li>如果没有命中，浏览器就会把请求发送给服务器，进入缓存协商阶段。</li>
+</ol>
+</blockquote>
+<p><img src="/images/blog/httpCache/http-cache2.png" alt="本地缓存" title="本地缓存"></p>
+<p>和本地缓存相关的头有：Cache-Control、Expires、Cache-Control有多个可选值，代表不同的意义。</p>
+<p><strong>Cache-Control:</strong><br>Cache-Control是HTTP缓存中最终要的部分，是HTTP/1.1中出现的，它由如下几个值组成：</p>
+<blockquote>
+<ol>
+<li>no-cache : 不使用本地存储。需要使用缓存协商，先与服务器确认返回的响应是否被更改，如果之前的响应中存在ETag，那么请求的时候会与服务端验证，如果未更改，则可避免重新下载；</li>
+<li>no-store : 直接禁止浏览器缓存数据，每次请求该资源都会向服务器发送请求，进行下载完整资源；</li>
+<li>public : 可以被所有用户缓存，包括终端用户和CND等中间代理服务器；</li>
+<li>private : 只能被终端用户的浏览器缓存，不允许CDN等中间代理服务器对其进行缓存；</li>
+<li>max-age : 从当前请求开始，允许获取的响应被重用的最长时间（秒）。</li>
+</ol>
+</blockquote>
+<p><strong>Expires</strong><br>Expires是HTTP/1.0出现的头 信息，同样是用于决定本地缓存策略的头，是一个绝对时间，只要发送请求的时间在Expires之前，那么本地缓存一直有效，<br>否则会去服务器发送请求获取新的资源。如果和Cache-Control：max-age同时出现，那么Cache-Control：max-age 优先级更高，可一起组合使用。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Cache-Control:public</div><div class="line">Expires: Mon, 10 Jun 2015 21:31:12 GMT</div></pre></td></tr></table></figure></p>
+<h3 id="缓存协商"><a href="#缓存协商" class="headerlink" title="缓存协商"></a>缓存协商</h3><p>当第一次请求时服务器返回的响应头中没有Cache-Control和Expires或者Cache-Control和Expires过期或它的属性设置为no-cache时，那么浏览器第二次请求时<br>就会与服务器进行协商，询问确认浏览器中的资源缓存是否为旧版本，需不需要更新。这时服务器会根据 Last-Modified/If-Modified-Since与ETag/If-None-Match<br>进行判断，如果缓存和服务器信息一致，那无需再次下载该资源，服务器直接返回304 Not Modified状态码，如果服务器发现缓存时旧版本，那么服务器会把最新的资源<br>的完整内容返回浏览器，状态码是200 OK；</p>
+<p><img src="/images/blog/httpCache/http-cache3.png" alt="缓存协商" title="缓存协商"></p>
+<p><strong>Last-Modified/If-Modified-Since：</strong><br>浏览器第一次请求一个资源的时候 ，服务器返回的header中会加上Last-Modified，Last-Modified是一个时间标识该资源最后的修改时间，<br>当浏览器再次请求该资源时，request的请求头中会包含If-Modified-Since ，该值为缓存之前返回的Last-Modified。服务器收到If-Modified-Since<br>后，根据资源的最后修改时间判断是否命中缓存<br>如果命中缓存返回304，并且不会返回资源内容，并且不会再次返回Last-Modified。</p>
+<p><strong>ETag/If-None-Match</strong></p>
+<p>与Last-Modified/If-Modified-Since不同的是，ETag/If-None-Match返回的是一个校验码。ETag可以保证每一个资源时唯一的，资源的变化会导致ETag变化，<br>服务器根据浏览器上送来的If-None-Match值来判断是否命中缓存。<br>与Last-Modified不一样的是，当服务器返回304之后，由于ETag重新生成，response header中还会把这个ETag返回，即使这个ETag跟之前的没有变化。</p>
+<p>ETag的在http1.1中出现时为了解决几个Last-Modified无法解决的问题：</p>
+<blockquote>
+<ol>
+<li>一些文件的周期性更改，但它的内容并不会更改（仅仅改变的修改时间），这个时候不希望客户端重新GET；</li>
+<li>某些文件更改频繁，比如在秒以下的时间进行更改，If-Modified-Since的检查精确到秒，但这种修改就无法判断；</li>
+<li>某些服务器不能精的得到文件的最后修改时间。</li>
+</ol>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">缓存类型</th>
+<th style="text-align:center">获取资源形式</th>
+<th style="text-align:center">状态码</th>
+<th style="text-align:center">发送请求到服务器</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">本地缓存</td>
+<td style="text-align:center">从缓存取</td>
+<td style="text-align:center">200(from cache)</td>
+<td style="text-align:center">否，直接从缓存取</td>
+</tr>
+<tr>
+<td style="text-align:center">缓存协商</td>
+<td style="text-align:center">从缓存取</td>
+<td style="text-align:center">304(Not Modified)</td>
+<td style="text-align:center">否，通过服务器来告知是否可用</td>
+</tr>
+</tbody>
+</table>
+<h3 id="实际问题分析"><a href="#实际问题分析" class="headerlink" title="实际问题分析"></a>实际问题分析</h3><p>在请求的URL中，增加一个参数，比如：js/mian.js?ver = 0.7.1 ;这个参数是版本号，每一次部署更新的时候 ，当这个参数变化，本地缓存就会失效并重新加载，这样一来，<br>静态资源，部署以后就需要重新加载。</p>
 
       
     </div>
@@ -372,8 +438,8 @@ npm install
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/03/29/2017-03-29/" rel="next" title="CSS实现元素垂直居中的几个常用方法">
-                <i class="fa fa-chevron-left"></i> CSS实现元素垂直居中的几个常用方法
+              <a href="/2017/05/26/一个基于Vue-Node的前后端分离案例/" rel="next" title="一个基于Vue+Node的前后端分离案例">
+                <i class="fa fa-chevron-left"></i> 一个基于Vue+Node的前后端分离案例
               </a>
             
           </div>
@@ -382,8 +448,8 @@ npm install
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/04/12/JavaScript面向对象编程指南-读书笔记/" rel="prev" title="JavaScript面向对象编程指南--读书笔记">
-                JavaScript面向对象编程指南--读书笔记 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/06/19/跨域了解/" rel="prev" title="跨域了解">
+                跨域了解 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -533,7 +599,7 @@ npm install
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#缓存的优点"><span class="nav-number">1.0.1.</span> <span class="nav-text">缓存的优点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#缓存的分类"><span class="nav-number">1.0.2.</span> <span class="nav-text">缓存的分类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#本地缓存"><span class="nav-number">1.0.3.</span> <span class="nav-text">本地缓存</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#缓存协商"><span class="nav-number">1.0.4.</span> <span class="nav-text">缓存协商</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实际问题分析"><span class="nav-number">1.0.5.</span> <span class="nav-text">实际问题分析</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
