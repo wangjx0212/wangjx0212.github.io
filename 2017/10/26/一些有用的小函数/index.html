@@ -1,0 +1,714 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="前言记录下这几个月的项目中用到的一些小函数。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一些有用的小函数">
+<meta property="og:url" content="http://yoursite.com/2017/10/26/一些有用的小函数/index.html">
+<meta property="og:site_name" content="Savill blog">
+<meta property="og:description" content="前言记录下这几个月的项目中用到的一些小函数。">
+<meta property="og:updated_time" content="2017-10-26T06:56:16.874Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="一些有用的小函数">
+<meta name="twitter:description" content="前言记录下这几个月的项目中用到的一些小函数。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/10/26/一些有用的小函数/"/>
+
+
+
+
+
+  <title> 一些有用的小函数 | Savill blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Savill blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/26/一些有用的小函数/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Savill W">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/head.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Savill blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                一些有用的小函数
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-26T10:35:21+08:00">
+                2017-10-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>记录下这几个月的项目中用到的一些小函数。<br><a id="more"></a></p>
+<h1 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h1><p>1.匹配数组的内容并删除它：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Array</span>.prototype.delete = <span class="function"><span class="keyword">function</span>(<span class="params">delContent</span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> array = [],</div><div class="line">        len = <span class="keyword">this</span>.length;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; len; i++)&#123;</div><div class="line">        <span class="keyword">if</span>( <span class="keyword">this</span>[i] !== delContent )&#123;</div><div class="line">            array.push(<span class="keyword">this</span>[i]);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> array;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>2.数组元素是json对象的去重方法：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line">* 将对象元素转成字符串比较</div><div class="line">* @param obj 对象元素</div><div class="line">* @param keys 包含key值字符串的数组</div><div class="line">* @return 返回处理后字符串形式的对象元素</div><div class="line">*/</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">obj2keys</span>(<span class="params">obj, keys</span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> n = keys.length,</div><div class="line">        key - [];</div><div class="line">    <span class="keyword">while</span>(n--)&#123;</div><div class="line">        key.push(obj[keys[n]]);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> key.joini(<span class="string">'|'</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line">* 去重操作</div><div class="line">* @param array 待去重的数组</div><div class="line">* @param keys 包含key值字符串的数组</div><div class="line">* @ return 返回去重后的数组</div><div class="line">*/</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">uniqeByKeys</span>(<span class="params">array,keys</span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> arr = [],</div><div class="line">        hash = &#123;&#125;;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>, len = array.length; i &lt; len; i++)&#123;</div><div class="line">        <span class="keyword">var</span> k = obj2keys(array[i],keys);</div><div class="line">        <span class="keyword">if</span>(!(k <span class="keyword">in</span> hash))&#123;</div><div class="line">            hash[k] = <span class="literal">true</span>;</div><div class="line">            arr.push(arrar[i])</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> arr;</div><div class="line">&#125;</div><div class="line"></div><div class="line">用法：</div><div class="line"><span class="keyword">var</span> arr = [</div><div class="line">    &#123;<span class="string">'id'</span>:<span class="number">11111</span>,<span class="string">'name'</span>:<span class="string">'wang'</span>,<span class="string">'age'</span>:<span class="number">18</span>&#125;,</div><div class="line">    &#123;<span class="string">'id'</span>:<span class="number">22222</span>,<span class="string">'name'</span>:<span class="string">'li'</span>,<span class="string">'age'</span>:<span class="number">20</span>&#125;,</div><div class="line">    &#123;<span class="string">'id'</span>:<span class="number">33333</span>,<span class="string">'name'</span>:<span class="string">'chen'</span>,<span class="string">'age'</span>:<span class="number">22</span>&#125;,</div><div class="line">    &#123;<span class="string">'id'</span>:<span class="number">33333</span>,<span class="string">'name'</span>:<span class="string">'xu'</span>,<span class="string">'age'</span>:<span class="number">22</span>&#125;,</div><div class="line">    &#123;<span class="string">'id'</span>:<span class="number">33333</span>,<span class="string">'name'</span>:<span class="string">'tang'</span>,<span class="string">'age'</span>:<span class="number">28</span>&#125;</div><div class="line">]</div><div class="line">uniqeByKeys(arr,[<span class="string">'id'</span>,<span class="string">'age'</span>]);</div><div class="line"><span class="comment">// 结果返回新的数组</span></div><div class="line">[</div><div class="line">    &#123;<span class="string">'id'</span>:<span class="number">11111</span>,<span class="string">'name'</span>:<span class="string">'wang'</span>,<span class="string">'age'</span>:<span class="number">18</span>&#125;,</div><div class="line">    &#123;<span class="string">'id'</span>:<span class="number">22222</span>,<span class="string">'name'</span>:<span class="string">'li'</span>,<span class="string">'age'</span>:<span class="number">20</span>&#125;,</div><div class="line">    &#123;<span class="string">'id'</span>:<span class="number">33333</span>,<span class="string">'name'</span>:<span class="string">'xu'</span>,<span class="string">'age'</span>:<span class="number">22</span>&#125;,</div><div class="line">    &#123;<span class="string">'id'</span>:<span class="number">33333</span>,<span class="string">'name'</span>:<span class="string">'tang'</span>,<span class="string">'age'</span>:<span class="number">28</span>&#125;</div><div class="line">]</div></pre></td></tr></table></figure></p>
+<p>3.判断是否是JSON数据<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">isJSON</span>(<span class="params">str</span>)</span>&#123;</div><div class="line">    <span class="keyword">if</span>(<span class="keyword">typeof</span> str == <span class="string">'string'</span>)&#123;</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">             <span class="keyword">var</span> obj = <span class="built_in">JSON</span>.parse(str);</div><div class="line">             <span class="keyword">if</span>(str.indexOf(<span class="string">'&#123;'</span>))&#123;</div><div class="line">                 <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">             &#125;<span class="keyword">else</span> &#123;</div><div class="line">                 <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">             &#125;</div><div class="line">        &#125; <span class="keyword">catch</span>(e)&#123;</div><div class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>4.获取时间戳<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">timestamp</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> (<span class="keyword">new</span> <span class="built_in">Date</span>()).valueOf();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>5.时间戳转为：2017-10-26 12:16:27 格式<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">timestampTo</span>(<span class="params">timestamp</span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Date</span>(<span class="built_in">parseInt</span>(timestamp).toLocaleString().replace(<span class="regexp">/年|月/g</span>, <span class="string">"-"</span>).replace(<span class="regexp">/日/g</span>, <span class="string">" "</span>);</div><div class="line">&#125;</div><div class="line"><span class="comment">// 如果只是到秒的时间戳，需要算到毫秒：timestamp*1000</span></div></pre></td></tr></table></figure></p>
+<p>6.node环境转MD5<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 需要安装crypto模块</span></div><div class="line">npm install crypto --save</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">md5Crypto</span>(<span class="params">content</span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> crypto.createHash(<span class="string">'md5'</span>).update(content).digest(<span class="string">'hex'</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>7.node环境 base64 存文件（图片）</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//需要引入‘fs’ 模块</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">saveBase64</span>(<span class="params">base64Data,name</span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> imgURL;</div><div class="line">    <span class="keyword">if</span>(base64Data.indexOf(<span class="string">'data:image'</span>) &gt; <span class="number">-1</span>)&#123;</div><div class="line">        <span class="keyword">var</span> dataURL = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="regexp">/^data:image\/\w+;base64,/</span>,<span class="string">"g"</span>),</div><div class="line">            dataType = dataURL.exec(base64Data)[<span class="number">0</span>].split(<span class="string">';'</span>)[<span class="number">0</span>].split(<span class="string">'/'</span>)[<span class="number">1</span>],</div><div class="line">            filterData = base64Data.replace(dataURL, <span class="string">""</span>), <span class="comment">//过滤data:URL</span></div><div class="line">            dataBuffer = <span class="keyword">new</span> Buffer(filterData, <span class="string">'base64'</span>);</div><div class="line"></div><div class="line">            fs.writeFile(<span class="string">"./server/static/image/"</span>+name+<span class="string">"."</span>+dataType+<span class="string">""</span>, dataBuffer, <span class="function"><span class="keyword">function</span>(<span class="params">err</span>) </span>&#123;</div><div class="line">                <span class="keyword">if</span>(err)&#123;</div><div class="line">                <span class="built_in">console</span>.log(err);</div><div class="line">                &#125;<span class="keyword">else</span>&#123;</div><div class="line">                <span class="built_in">console</span>.log(<span class="string">"保存成功！"</span>);</div><div class="line">                &#125;</div><div class="line">            &#125;);</div><div class="line">            </div><div class="line">            imgURL = imgWebURL+name+<span class="string">"."</span>+dataType</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            imgURL = base64Data;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> imgURL;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/10/25/node发送http请求/" rel="next" title="node发送http请求">
+                <i class="fa fa-chevron-left"></i> node发送http请求
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/head.jpg"
+               alt="Savill W" />
+          <p class="site-author-name" itemprop="name">Savill W</p>
+           
+              <p class="site-description motion-element" itemprop="description">专注</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/wangjx0212" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/wang-jie-qian-27" target="_blank" title="Zhihu">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Zhihu
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.jianshu.com/users/f4d99cd19f0a/timeline" target="_blank" title="Jianshu">
+                  
+                    <i class="fa fa-fw fa-joomla"></i>
+                  
+                  Jianshu
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.douban.com/people/49346458/" target="_blank" title="Douban">
+                  
+                    <i class="fa fa-fw fa-dashcube"></i>
+                  
+                  Douban
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#函数"><span class="nav-number">2.</span> <span class="nav-text">函数</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Savill W</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
