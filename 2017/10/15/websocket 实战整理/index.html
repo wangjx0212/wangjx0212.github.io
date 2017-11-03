@@ -93,7 +93,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/10/15/websocket 实战整理/index.html">
 <meta property="og:site_name" content="Savill blog">
 <meta property="og:description" content="前言相较于http这种单向的，只能由客户端发起请求，且不能持久链接的协议，websocket可以做到客户端实时获得服务器端推送的消息。">
-<meta property="og:updated_time" content="2017-10-26T07:48:18.165Z">
+<meta property="og:updated_time" content="2017-11-03T04:13:56.360Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="websocket 实战整理">
 <meta name="twitter:description" content="前言相较于http这种单向的，只能由客户端发起请求，且不能持久链接的协议，websocket可以做到客户端实时获得服务器端推送的消息。">
@@ -330,7 +330,6 @@
 <li>没有同源限制，客户端可以和任意服务器通信；</li>
 <li>协议标识符是ws（如果加密，则为wss），服务器网址为URL；</li>
 </ul>
-<p>从7月中旬到现在，一直忙于负责一个基于websocket的类客服系统，vue+node的开发技术栈，接下来的博客会记录这个系统开发过程中所用到的东西。过来是这个项目已经开始，被告知Node的socket.io模块不可用，所以选择了ws这个模块。</p>
 <h1 id="客户端的API："><a href="#客户端的API：" class="headerlink" title="客户端的API："></a>客户端的API：</h1><p>WebSocket对象作为一个构造函数，用于新建WebSocket实例：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> ws = <span class="keyword">new</span> WebSocket(<span class="string">'ws://localhost:8080?param=username&amp;source=webke'</span>);</div></pre></td></tr></table></figure></p>
 <h2 id="webSocket-readyState"><a href="#webSocket-readyState" class="headerlink" title="webSocket.readyState"></a>webSocket.readyState</h2><p>readyState属性返回实例对象的当前状态，共4种：</p>
 <ul>
