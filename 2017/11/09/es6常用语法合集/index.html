@@ -1,0 +1,757 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="前言ES6是2015年6月正式发布的JavaScript语法标准，低端浏览器需要使用babel语法转换器。热门流行的库基本都基于ES6构建。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="es6常用语法合集">
+<meta property="og:url" content="http://yoursite.com/2017/11/09/es6常用语法合集/index.html">
+<meta property="og:site_name" content="Savill blog">
+<meta property="og:description" content="前言ES6是2015年6月正式发布的JavaScript语法标准，低端浏览器需要使用babel语法转换器。热门流行的库基本都基于ES6构建。">
+<meta property="og:updated_time" content="2017-11-13T09:15:22.081Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="es6常用语法合集">
+<meta name="twitter:description" content="前言ES6是2015年6月正式发布的JavaScript语法标准，低端浏览器需要使用babel语法转换器。热门流行的库基本都基于ES6构建。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/11/09/es6常用语法合集/"/>
+
+
+
+
+
+  <title> es6常用语法合集 | Savill blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Savill blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/09/es6常用语法合集/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Savill W">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/head.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Savill blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                es6常用语法合集
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-09T11:09:33+08:00">
+                2017-11-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>ES6是2015年6月正式发布的JavaScript语法标准，低端浏览器需要使用babel语法转换器。热门流行的库基本都基于ES6构建。<br><a id="more"></a></p>
+<h1 id="新的变量声明方式let-和-const"><a href="#新的变量声明方式let-和-const" class="headerlink" title="新的变量声明方式let 和 const"></a>新的变量声明方式let 和 const</h1><p>和var的不同的是新的变量声明方式带来了块作用域和不再具备变量提升</p>
+<p>块作用域：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="keyword">var</span> a = <span class="number">10</span>;</div><div class="line">  <span class="keyword">let</span> b = <span class="number">1</span>;</div><div class="line">&#125;</div><div class="line"><span class="built_in">console</span>.log(a); <span class="comment">// 10</span></div><div class="line"><span class="built_in">console</span>.log(b); <span class="comment">// b is not defined</span></div></pre></td></tr></table></figure></p>
+<p>变量提升：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//es5</span></div><div class="line"><span class="built_in">console</span>.log(a);  <span class="comment">// a is undefined</span></div><div class="line"><span class="keyword">var</span> a = <span class="number">10</span>;</div><div class="line"></div><div class="line"><span class="comment">//es6</span></div><div class="line"><span class="built_in">console</span>.log(a);</div><div class="line"><span class="keyword">var</span> a = <span class="number">10</span>;  <span class="comment">// error: a is not defined</span></div></pre></td></tr></table></figure></p>
+<p>不允许重复声明：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//es5</span></div><div class="line"><span class="keyword">var</span> a = <span class="number">10</span>;</div><div class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</div><div class="line"><span class="built_in">console</span>.log(a); <span class="comment">// 1;</span></div><div class="line"></div><div class="line"><span class="comment">//es6</span></div><div class="line"><span class="keyword">var</span> a = <span class="number">10</span>;</div><div class="line"><span class="keyword">let</span> a = <span class="number">1</span>; <span class="comment">// error: Identifier 'a' has already been declared</span></div></pre></td></tr></table></figure></p>
+<p><strong>let声明一个值会被改变的变量，const声明一个值不会被改变的变量,称之为常数变量, 所以const一旦声明变量就必须立即初始化，只声明不赋值，会报错</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> a = <span class="number">10</span>;</div><div class="line">a = <span class="number">1</span>;</div><div class="line"><span class="built_in">console</span>.log(a); <span class="comment">// 1</span></div><div class="line"><span class="keyword">const</span> b = <span class="number">10</span>;</div><div class="line">b = <span class="number">1</span>; <span class="comment">// Uncaught TypeError: Assignment to constant variable.	</span></div><div class="line"><span class="keyword">const</span> c;  <span class="comment">// Uncaught SyntaxError: Missing initializer in const declaration</span></div></pre></td></tr></table></figure>
+<p>const 保证的并不是变量的值不能改动，而是指向变量的那个内存地址不得改动<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> a = [];</div><div class="line">a.push(<span class="string">'hello'</span>); <span class="comment">// 可执行</span></div><div class="line"><span class="built_in">console</span>.log(a); <span class="comment">// ['hello']</span></div><div class="line">a[<span class="number">0</span>] = <span class="string">'world'</span>;</div><div class="line"><span class="built_in">console</span>.log(a); <span class="comment">// ['world'];</span></div><div class="line">a.length = <span class="number">0</span> ; </div><div class="line"><span class="built_in">console</span>.log(a); <span class="comment">// [];	</span></div><div class="line">a = [<span class="string">'hello world'</span>]; <span class="comment">// TypeError: Assignment to constant variable.</span></div></pre></td></tr></table></figure></p>
+<p><strong>es6 声明变量有6种：</strong><br>var(es5)、function(es5)、 let、const、import、class</p>
+<h1 id="模板字符串"><a href="#模板字符串" class="headerlink" title="模板字符串"></a>模板字符串</h1><p>使用反引号``将整个字符串包裹起来，当中使用${}来包裹直接写变量或者写表达式。<br>多行字符串，告别+拼接字符串。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//es5</span></div><div class="line"><span class="keyword">var</span> a = <span class="string">'Translate'</span>;</div><div class="line"><span class="keyword">var</span> b = <span class="string">'good'</span>;</div><div class="line"><span class="built_in">console</span>.log(<span class="string">'google '</span>+a+<span class="string">' is '</span>+b);</div><div class="line"></div><div class="line"><span class="comment">//es6</span></div><div class="line"><span class="keyword">var</span> a = <span class="string">'Translate'</span>;</div><div class="line"><span class="keyword">var</span> b = <span class="string">'good'</span>;</div><div class="line"><span class="built_in">console</span>.log(<span class="string">`google <span class="subst">$&#123;a&#125;</span> is <span class="subst">$&#123;b&#125;</span>`</span>);</div></pre></td></tr></table></figure></p>
+<h1 id="函数扩展"><a href="#函数扩展" class="headerlink" title="函数扩展"></a>函数扩展</h1><h2 id="参数默认值"><a href="#参数默认值" class="headerlink" title="参数默认值"></a>参数默认值</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//es5</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">log</span>(<span class="params">x,y</span>)</span>&#123;</div><div class="line">	y = y || <span class="string">'world'</span> ;</div><div class="line">	<span class="built_in">console</span>.log(x, y);</div><div class="line">&#125;</div><div class="line">log(<span class="string">'hello'</span>);  <span class="comment">// hello world</span></div><div class="line">log(<span class="string">'hello'</span>,<span class="string">'china'</span>); <span class="comment">// hello china</span></div><div class="line">log(<span class="string">'hello'</span>,<span class="string">''</span>);	<span class="comment">// hello world</span></div><div class="line"></div><div class="line"><span class="comment">//es6</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">log</span>(<span class="params">x,y=<span class="string">'world'</span></span>)</span>&#123;</div><div class="line">	<span class="built_in">console</span>.log(x, y);</div><div class="line">&#125;</div><div class="line">log(<span class="string">'hello'</span>);  <span class="comment">// hello world</span></div><div class="line">log(<span class="string">'hello'</span>,<span class="string">'china'</span>); <span class="comment">// hello china</span></div><div class="line">log(<span class="string">'hello'</span>,<span class="string">''</span>);	<span class="comment">// hello</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Point</span>(<span class="params">x=<span class="number">0</span>,y=<span class="number">0</span></span>)</span>&#123;</div><div class="line">	<span class="keyword">this</span>.x = x;</div><div class="line">	<span class="keyword">this</span>.y = y;</div><div class="line">&#125;</div><div class="line"><span class="keyword">const</span> p = <span class="keyword">new</span> Point();</div><div class="line">p <span class="comment">// &#123;x:0,y:0&#125;</span></div></pre></td></tr></table></figure>
+<p>函数参数变量默认声明，所以不能再用let和const进行声明，所以使用参数默认值时，函数不能有同名参数。<br>参数默认值不是传值，而是每次都重新计算默认值表达式的值，其实它就是惰性求值。</p>
+<h2 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// es5</span></div><div class="line"><span class="keyword">var</span> f = <span class="function"><span class="keyword">function</span> (<span class="params">v</span>) </span>&#123; <span class="keyword">return</span> v&#125;</div><div class="line"></div><div class="line"><span class="comment">// es6</span></div><div class="line"><span class="keyword">var</span> f = <span class="function"><span class="params">v</span> =&gt;</span> v</div><div class="line"></div><div class="line"><span class="comment">// es5</span></div><div class="line"><span class="keyword">var</span> f = <span class="function"><span class="keyword">function</span> (<span class="params">a,b</span>) </span>&#123;</div><div class="line">	<span class="keyword">var</span>  c = <span class="number">10</span>;</div><div class="line">	<span class="keyword">return</span> a+b+c;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// es6</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> f = <span class="function">(<span class="params">a,b</span>) =&gt;</span> &#123;</div><div class="line">	<span class="keyword">const</span> c = <span class="number">10</span>;</div><div class="line">	<span class="keyword">return</span> a+b+<span class="number">10</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>箭头函数可以替换函数表达式、但不能替换函数声明</strong> </p>
+<ul>
+<li>箭头函数体内的this对象是定义时所在额对象，不是使用时所在的对象；</li>
+<li>不可以当做构造函数，不能使用new命令；</li>
+<li>不存在arguments对象，可以用rest 参数代替</li>
+</ul>
+<h2 id="展开运算符"><a href="#展开运算符" class="headerlink" title="展开运算符"></a>展开运算符</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">push</span>(<span class="params">array, ...items</span>)</span>&#123;</div><div class="line">	items.forEach(<span class="function"><span class="params">item</span> =&gt;</span> &#123;</div><div class="line">		array.push(item);</div><div class="line">		<span class="built_in">console</span>.log(item);</div><div class="line">	&#125;)</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> a = [];</div><div class="line">push(a,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>);</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> arr1 = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>];</div><div class="line"><span class="keyword">const</span> arr2 = [...arr1,<span class="number">10</span>,<span class="number">11</span>,<span class="number">12</span>];</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(arr2); <span class="comment">// [1,2,3,4,5,10,11,12]</span></div></pre></td></tr></table></figure>
+<h1 id="对象扩展"><a href="#对象扩展" class="headerlink" title="对象扩展"></a>对象扩展</h1><h2 id="Object-keys、values、entries"><a href="#Object-keys、values、entries" class="headerlink" title="Object.keys、values、entries"></a>Object.keys、values、entries</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> &#123;keys, values, entries&#125; = <span class="built_in">Object</span>;</div><div class="line"><span class="keyword">let</span> obj = &#123;<span class="attr">a</span>:<span class="number">1</span>, <span class="attr">b</span>:<span class="number">2</span>, <span class="attr">c</span>:<span class="number">2</span>&#125;</div><div class="line"></div><div class="line"><span class="keyword">for</span>(<span class="keyword">let</span> key <span class="keyword">of</span> keys(obj))&#123;</div><div class="line">	<span class="built_in">console</span>.log(key); <span class="comment">// 'a'，'b'，'c'</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">for</span>(<span class="keyword">let</span> value <span class="keyword">of</span> values(obj))&#123;</div><div class="line">	<span class="built_in">console</span>.log(value); <span class="comment">// 1，2，3</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">for</span>(<span class="keyword">let</span> [key,value] <span class="keyword">of</span> entries(obj))&#123;</div><div class="line">	<span class="built_in">console</span>.log([key,value]); <span class="comment">// ['a':1]，['b':2]，['c':3]</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>Object.values：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">const obj = &#123;foo:&apos;bar&apos;,baz:42&#125;;</div><div class="line">console.log(Object.values(obj)); // [&apos;bar&apos;,42]</div><div class="line"></div><div class="line">const obj = &#123;100:&apos;a&apos;,2:&apos;b&apos;,foo:&apos;c&apos;,5:&apos;d&apos;&#125;;</div><div class="line">console.log(Object.values(obj)) // [&quot;b&quot;, &quot;d&quot;, &quot;a&quot;, &quot;c&quot;]</div></pre></td></tr></table></figure></p>
+<p>属性名如有为数值的属性，是按数值大小，从小到大进行遍历，然后再进行其他的遍历</p>
+<h2 id="对象方法简写、计算属性"><a href="#对象方法简写、计算属性" class="headerlink" title="对象方法简写、计算属性"></a>对象方法简写、计算属性</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> name = <span class="string">'Jane'</span>;</div><div class="line"><span class="keyword">const</span> age = <span class="number">20</span>;</div><div class="line"></div><div class="line"><span class="comment">// es6 </span></div><div class="line"><span class="keyword">const</span> person = &#123;</div><div class="line">	name,</div><div class="line">	age</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// es5</span></div><div class="line"><span class="keyword">const</span> person = &#123;</div><div class="line">	<span class="attr">name</span>:name,</div><div class="line">	<span class="attr">age</span>:age</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//方法的简写</span></div><div class="line"><span class="keyword">const</span> o = &#123;</div><div class="line">	method()&#123;</div><div class="line">		<span class="attr">return</span>: <span class="string">'hello'</span>;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 等同于</span></div><div class="line"> <span class="keyword">const</span> o =&#123;</div><div class="line"> 	<span class="attr">method</span>:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line"> 		<span class="keyword">return</span> <span class="string">'hello'</span></div><div class="line"> 	&#125;</div><div class="line"> &#125;</div></pre></td></tr></table></figure>
+<p>这个种方法在任何的地方都可以使用，比如在一个模块对外提供接口时<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> getName = <span class="function"><span class="params">()</span> =&gt;</span> person.name;</div><div class="line"><span class="keyword">const</span> getAge = <span class="function"><span class="params">()</span> =&gt;</span> person.age;</div><div class="line"></div><div class="line"><span class="comment">// commonJS 的写法</span></div><div class="line"><span class="built_in">module</span>.exports = &#123; getName,getAge&#125;</div><div class="line"></div><div class="line"><span class="comment">// es6 modules 的方式</span></div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;getName,getAge&#125;</div></pre></td></tr></table></figure></p>
+<p>在对象字面量中可以使用中括号作为属性，表示属性名也可能是一个变量<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> name = <span class="string">'savill'</span>;</div><div class="line"><span class="keyword">const</span> age = <span class="number">20</span>;</div><div class="line"></div><div class="line"><span class="keyword">const</span> person = &#123;</div><div class="line">	[name]:<span class="literal">true</span>,</div><div class="line">	[age]:<span class="literal">true</span></div><div class="line">&#125;</div><div class="line">person[<span class="string">'savill'</span>] === person[name] <span class="comment">// true</span></div></pre></td></tr></table></figure></p>
+<h2 id="展开运算符-1"><a href="#展开运算符-1" class="headerlink" title="展开运算符"></a>展开运算符</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> &#123;x,y,...z&#125; = &#123;<span class="attr">x</span>:<span class="number">1</span>,<span class="attr">y</span>:<span class="number">2</span>,<span class="attr">a</span>:<span class="number">3</span>,<span class="attr">b</span>:<span class="number">4</span>,<span class="attr">c</span>:<span class="number">5</span>&#125;;</div><div class="line">x <span class="comment">// 1</span></div><div class="line">y <span class="comment">// 2</span></div><div class="line">z <span class="comment">// &#123;a:3,b:4,c:5&#125;</span></div></pre></td></tr></table></figure>
+<p>结构赋值要求等号右边必须是个对象，如果等号是undefined或者null，会报错，因为他们无法转为对象。<br>还有结构赋值必须是最后一个参数，否则也会报错。</p>
+<h1 id="结构赋值"><a href="#结构赋值" class="headerlink" title="结构赋值"></a>结构赋值</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">const [name,age] = [&apos;savill&apos;,20];</div><div class="line">const &#123;title,job&#125; = &#123;title:&apos;es6 基础合集&apos;,job:&apos;IT&apos;&#125;</div><div class="line">console.log(name,age); // savill 20</div><div class="line">console.log(title,job); // es6 基础合集 IT</div></pre></td></tr></table></figure>
+<h1 id="class-类"><a href="#class-类" class="headerlink" title="class 类"></a>class 类</h1><h2 id="constructor-构造函数"><a href="#constructor-构造函数" class="headerlink" title="constructor 构造函数"></a>constructor 构造函数</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// es5 构造函数</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Preson</span> (<span class="params">name.age</span>)</span>&#123;</div><div class="line">	<span class="keyword">this</span>.name = name;</div><div class="line">	<span class="keyword">this</span>.age = age;</div><div class="line">&#125;</div><div class="line"><span class="comment">// es5 原型方法</span></div><div class="line">Preson.prototype.getName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="keyword">return</span> <span class="keyword">this</span>.name;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// es6 </span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Preson</span> </span>&#123;</div><div class="line">	<span class="comment">// 构造方法</span></div><div class="line">	<span class="keyword">constructor</span>(name,age)&#123;</div><div class="line">		<span class="keyword">this</span>.name = name;</div><div class="line">		<span class="keyword">this</span>.age = age;</div><div class="line">	&#125;</div><div class="line">	<span class="comment">// 原型方法</span></div><div class="line">	getName()&#123;</div><div class="line">		<span class="keyword">return</span> <span class="keyword">this</span>.name;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="keyword">static</span> a = <span class="number">20</span>; <span class="comment">// 等同于 Preson.a = 20;</span></div><div class="line">	c = <span class="number">20</span> ; <span class="comment">// 表示在构造函数中添加属性，在构造函数中等同于this.c = 20;</span></div><div class="line">	<span class="comment">// 箭头函数的写法表示在构造函数中添加方法，在构造函数中等同于this.getAge = function() &#123;&#125;</span></div><div class="line">	getAge = <span class="function"><span class="params">()</span> =&gt;</span> <span class="keyword">this</span>.age</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="Extends继承"><a href="#Extends继承" class="headerlink" title="Extends继承"></a>Extends继承</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Preson</span> </span>&#123;</div><div class="line">	<span class="keyword">constructor</span>(name,age)&#123;</div><div class="line">		<span class="keyword">this</span>.name = name;</div><div class="line">		<span class="keyword">this</span>.age = age;</div><div class="line">	&#125;</div><div class="line">	getName()&#123;</div><div class="line">		<span class="keyword">return</span> <span class="keyword">this</span>.name;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span> <span class="keyword">extends</span> <span class="title">Preson</span></span>&#123;</div><div class="line">	<span class="keyword">constructor</span>(name,age,gender,classes)&#123;</div><div class="line">		<span class="keyword">super</span>(name,age);</div><div class="line">		<span class="keyword">this</span>.gender = gender;</div><div class="line">		<span class="keyword">this</span>.classes = classes;</div><div class="line">	&#125;</div><div class="line">	getGender()&#123;</div><div class="line">		<span class="keyword">return</span> <span class="keyword">this</span>.gender</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在继承的构造函数中，必须调用一次super方法，表示构造函数的继承，和ES5中使用call&amp;apple继承构造函数是一样的功能。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// es6</span></div><div class="line"><span class="keyword">super</span>();</div><div class="line"></div><div class="line"><span class="comment">// es5</span></div><div class="line">Person.call(<span class="keyword">this</span>);</div></pre></td></tr></table></figure></p>
+<p>super还可以直接调用父级的原型方法。比如：super.getName </p>
+<h1 id="新的数据结构"><a href="#新的数据结构" class="headerlink" title="新的数据结构"></a>新的数据结构</h1><ul>
+<li>Set , 元素不可重合</li>
+<li>Map</li>
+<li>Symbol</li>
+</ul>
+<h1 id="模块化"><a href="#模块化" class="headerlink" title="模块化"></a>模块化</h1><ul>
+<li>Import import{}</li>
+<li>Export、Export default</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// module1.js</span></div><div class="line"><span class="keyword">export</span> name =<span class="string">'savill'</span>;</div><div class="line"><span class="keyword">export</span> age = <span class="number">20</span>;</div><div class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">sayHello</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="built_in">console</span>.log(<span class="string">`hello <span class="subst">$&#123;name&#125;</span>`</span>);</div><div class="line">&#125;</div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> site = <span class="string">'savill'</span>; </div><div class="line"></div><div class="line"><span class="comment">// module2.js</span></div><div class="line"><span class="keyword">import</span> site,&#123;name,age&#125; <span class="keyword">from</span> <span class="string">'./module1'</span></div><div class="line"><span class="keyword">import</span> * <span class="keyword">as</span> <span class="built_in">module</span> <span class="keyword">from</span> <span class="string">'./module1'</span></div><div class="line"><span class="built_in">console</span>.log(site,name,age);</div><div class="line"><span class="built_in">module</span>.sayHello();</div></pre></td></tr></table></figure>
+<h1 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h1><p> 还要一些特性，虽然不在es6范围，但是也被babel支持，普遍被接收和使用（安装插件）</p>
+<ul>
+<li>对象扩展符，函数绑定</li>
+<li>装饰器</li>
+<li>Async await</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/11/01/NodeJS之包(package)创建/" rel="next" title="NodeJS之包(package)创建">
+                <i class="fa fa-chevron-left"></i> NodeJS之包(package)创建
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/head.jpg"
+               alt="Savill W" />
+          <p class="site-author-name" itemprop="name">Savill W</p>
+           
+              <p class="site-description motion-element" itemprop="description">专注</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/wangjx0212" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/wang-jie-qian-27" target="_blank" title="Zhihu">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Zhihu
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.jianshu.com/users/f4d99cd19f0a/timeline" target="_blank" title="Jianshu">
+                  
+                    <i class="fa fa-fw fa-joomla"></i>
+                  
+                  Jianshu
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.douban.com/people/49346458/" target="_blank" title="Douban">
+                  
+                    <i class="fa fa-fw fa-dashcube"></i>
+                  
+                  Douban
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#新的变量声明方式let-和-const"><span class="nav-number">2.</span> <span class="nav-text">新的变量声明方式let 和 const</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#模板字符串"><span class="nav-number">3.</span> <span class="nav-text">模板字符串</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#函数扩展"><span class="nav-number">4.</span> <span class="nav-text">函数扩展</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#参数默认值"><span class="nav-number">4.1.</span> <span class="nav-text">参数默认值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#箭头函数"><span class="nav-number">4.2.</span> <span class="nav-text">箭头函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#展开运算符"><span class="nav-number">4.3.</span> <span class="nav-text">展开运算符</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#对象扩展"><span class="nav-number">5.</span> <span class="nav-text">对象扩展</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Object-keys、values、entries"><span class="nav-number">5.1.</span> <span class="nav-text">Object.keys、values、entries</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对象方法简写、计算属性"><span class="nav-number">5.2.</span> <span class="nav-text">对象方法简写、计算属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#展开运算符-1"><span class="nav-number">5.3.</span> <span class="nav-text">展开运算符</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#结构赋值"><span class="nav-number">6.</span> <span class="nav-text">结构赋值</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#class-类"><span class="nav-number">7.</span> <span class="nav-text">class 类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#constructor-构造函数"><span class="nav-number">7.1.</span> <span class="nav-text">constructor 构造函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Extends继承"><span class="nav-number">7.2.</span> <span class="nav-text">Extends继承</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#新的数据结构"><span class="nav-number">8.</span> <span class="nav-text">新的数据结构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#模块化"><span class="nav-number">9.</span> <span class="nav-text">模块化</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#其他"><span class="nav-number">10.</span> <span class="nav-text">其他</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Savill W</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
