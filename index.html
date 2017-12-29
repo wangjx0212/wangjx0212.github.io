@@ -250,6 +250,265 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/18/初识Node-Koa2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Savill W">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/head.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Savill blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/12/18/初识Node-Koa2/" itemprop="url">
+                  初识Node-Koa2
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-18T17:41:55+08:00">
+                2017-12-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>koa由Express原班人员打造的，更小、更富有表现力、更健状的Web框架。koa2是基于async/await操作中间件，依赖于于Node v7.6.0 或更高版本 。<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/12/18/初识Node-Koa2/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/11/初识react/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Savill W">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/head.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Savill blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/12/11/初识react/" itemprop="url">
+                  初识react
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-11T14:27:48+08:00">
+                2017-12-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>react 、redux、router4 的初识配合使用。</p>
+<h1 id="react开发环境"><a href="#react开发环境" class="headerlink" title="react开发环境"></a>react开发环境</h1><p>create-react-app 架手脚自动创建基于webpack+ES6的React项目模板。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">npm install -g create-react-app</div><div class="line"></div><div class="line">create-react-app my-app</div><div class="line">cd my-app</div><div class="line">npm start</div></pre></td></tr></table></figure>
+<p>执行完以上命令之后，可以直接打开<a href="http://localhost:3000" target="_blank" rel="external">http://localhost:3000</a> ，即可看到调试环境下的React App 项目的浏览，<br>另执行：<br>npm run eject 可弹出配置文件，进行自定义配置webpack。</p>
+<p>下图是该架手脚生成的基本项目结构:<br><img src="/images/blog/react/react-layout.jpg" alt="alt text" title="creatprejoct"></p>
+<h1 id="react基础知识"><a href="#react基础知识" class="headerlink" title="react基础知识"></a>react基础知识</h1><p>安装最新版本的react：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install --save react@next react-dom@next</div></pre></td></tr></table></figure></p>
+<h1 id="Redux是什么"><a href="#Redux是什么" class="headerlink" title="Redux是什么"></a>Redux是什么</h1><p>Redux专注状态管理，和react view层解耦， 单一状态、单向数据流<br><strong>核心的概念：</strong>store、state、action、reducer、subscribe<br><strong>主要功能：</strong><br>store 管理着所有的状态记录state，如需要改变的时候需要定义action使用dispatch提交至reducer，reducer拿到state和action后，生成新的state;<br><strong>使用方法：</strong><br>1.通过reducer新建store，通过store.getState获取状态；<br>2.需要更改状态时，通过store.dispatch(action)来修改状态；<br>3.reducer函数接受state和action，返回新的state，可以使用store.subscribe监听每次的修改重新渲染。</p>
+<h2 id="Redux和react的一起使用。"><a href="#Redux和react的一起使用。" class="headerlink" title="Redux和react的一起使用。"></a>Redux和react的一起使用。</h2><p>使用方法 ：<br>1.store.dispatch方法传递传递给组件内部调用修改状态；<br>2.store.subscribe订阅render()函数，每次修改重新渲染；<br>3.Redux相关的内容，在单独的index.redux.js进行管理处理。<br>使用redux-thunk插件 ，异步处理：<br>install install redux-thunk –save<br>使用applyMiddleware开启中间件thunk<br>action可以返回函数</p>
+<p>index.redux.js:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> &#123; createStor &#125; <span class="keyword">from</span> <span class="string">'redux'</span></div><div class="line"><span class="keyword">const</span> ADD_GUN = <span class="string">'增加一个'</span>；</div><div class="line"><span class="keyword">const</span> REMOVE_GUN = <span class="string">'减少一个'</span>；</div><div class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">counter</span>(<span class="params">state = <span class="number">0</span>, action</span>) </span>&#123;</div><div class="line">	<span class="keyword">switch</span>(action.type) &#123;</div><div class="line">		<span class="attr">case</span>:ADD_GUN:</div><div class="line">			<span class="keyword">return</span> state+<span class="number">1</span>;</div><div class="line">		<span class="keyword">case</span>:REMOVE_GUN:</div><div class="line">			<span class="keyword">return</span> state<span class="number">-1</span>;</div><div class="line">		<span class="keyword">default</span>:</div><div class="line">			<span class="keyword">return</span> state;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">addGun</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	retrun &#123;<span class="attr">type</span>:ADD_GUN&#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">removeGun</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	retrun &#123;<span class="attr">type</span>:REMOVE_GUN&#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">addGunAsync</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="keyword">return</span> <span class="function"><span class="params">dispatch</span> =&gt;</span> &#123;</div><div class="line">		setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">			dispatch(addGun());</div><div class="line">		&#125;,<span class="number">2000</span>);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>index.js:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> React form <span class="string">'react'</span></div><div class="line"><span class="keyword">import</span> ReactDOM <span class="keyword">from</span> <span class="string">'react-dom'</span></div><div class="line"><span class="keyword">import</span> &#123; createStore,applyMiddleware &#125; <span class="keyword">from</span> <span class="string">'redux'</span></div><div class="line"><span class="keyword">import</span> 	thunk <span class="keyword">from</span> <span class="string">'redux-thunk'</span></div><div class="line"><span class="keyword">import</span> &#123; counter,addGun, removeGun,addGunAsync&#125;</div><div class="line"></div><div class="line"><span class="keyword">import</span> App <span class="keyword">from</span> <span class="string">'./App'</span></div><div class="line"></div><div class="line"><span class="keyword">const</span> store = createStore(counter,applyMiddleware(thunk));</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">render</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	ReactDOM.render(&#123;</div><div class="line">		&lt;App  store=&#123;store&#125; addGun=&#123;addGun&#125; removeGun=&#123;removeGun&#125; addGunAsync=&#123;addGunAsync&#125; /&gt;</div><div class="line">	&#125;);</div><div class="line">&#125;</div><div class="line">render();</div><div class="line">store.subscribe(render());</div></pre></td></tr></table></figure>
+<p>App.js</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">import React,&#123;Component&#125; form 'react'</div><div class="line"></div><div class="line">export default class App extends Component&#123;</div><div class="line">	constructor(props)&#123;</div><div class="line">		super(props)</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	render()&#123;</div><div class="line">		&lt;div&gt;</div><div class="line">			const store = this.props.store;</div><div class="line">			const num = store.getState();</div><div class="line">			const addGun = this.props.addGun;</div><div class="line">			const removeGun = this.props.removeGun;</div><div class="line">			const addGunAsync = this.props.addGunAsync;</div><div class="line">			&lt;h1&gt;现有&#123;num&#125;只&lt;/h1&gt;</div><div class="line">			&lt;button onClick=&#123;()=&gt;store.dispatch(addGun()) &#125;&gt;增加一只&lt;/button&gt;</div><div class="line">			&lt;button onClick=&#123;()=&gt;store.dispatch(removeGun()) &#125;&gt;减少一只&lt;/button&gt;</div><div class="line">			&lt;button onClick=&#123;()=&gt;store.dispatch(addGunAsync()) &#125;&gt;延时增加一只&lt;/button&gt;</div><div class="line">		&lt;/div&gt;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/09/es6常用语法合集/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1241,261 +1500,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/16/浏览器的缓存/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Savill W">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/head.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Savill blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/06/16/浏览器的缓存/" itemprop="url">
-                  HTTP的缓存策略
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-16T11:15:38+08:00">
-                2017-06-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>Http中具有缓存功能的是浏览器缓存，以及缓存代理服务器。其指的是当Web请求抵达缓存时，如果代理服务器或者客户端浏览器磁盘内保存有的资源副本，就可以直接读取加载,减少<br>对源服务器的访问。<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/06/16/浏览器的缓存/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/26/一个基于Vue-Node的前后端分离案例/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Savill W">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/head.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Savill blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/05/26/一个基于Vue-Node的前后端分离案例/" itemprop="url">
-                  一个基于Vue+Node的前后端分离案例
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-26T19:30:22+08:00">
-                2017-05-26
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>前端开发过程当中一直是基于后端的环境，而后端环境搭建是一项学习成本蛮大的技能，最近入坑了vue，看了不少的SPA案例，前后端分离的概念也了解些，因此决定<br>体验把前后端分离的全栈式开发</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/05/26/一个基于Vue-Node的前后端分离案例/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1540,7 +1549,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-count">21</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1553,7 +1562,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
