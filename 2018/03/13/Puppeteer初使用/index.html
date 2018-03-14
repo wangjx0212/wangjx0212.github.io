@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Nodejs," />
 
 
 
@@ -87,16 +87,16 @@
 
 
 
-<meta name="description" content="专注">
+<meta name="description" content="前言Puppeteer是谷歌官方出品的一个nodejs库，支持调用Chrome的API来直接控制Chrome模拟大部分用户来进行UI Test或者爬虫访问页面来进行收集数据。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="'Puppeteer初使用'">
+<meta property="og:title" content="Puppeteer初使用">
 <meta property="og:url" content="http://yoursite.com/2018/03/13/Puppeteer初使用/index.html">
 <meta property="og:site_name" content="Savill blog">
-<meta property="og:description" content="专注">
-<meta property="og:updated_time" content="2018-03-13T09:08:14.157Z">
+<meta property="og:description" content="前言Puppeteer是谷歌官方出品的一个nodejs库，支持调用Chrome的API来直接控制Chrome模拟大部分用户来进行UI Test或者爬虫访问页面来进行收集数据。">
+<meta property="og:updated_time" content="2018-03-14T06:16:27.430Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="'Puppeteer初使用'">
-<meta name="twitter:description" content="专注">
+<meta name="twitter:title" content="Puppeteer初使用">
+<meta name="twitter:description" content="前言Puppeteer是谷歌官方出品的一个nodejs库，支持调用Chrome的API来直接控制Chrome模拟大部分用户来进行UI Test或者爬虫访问页面来进行收集数据。">
 
 
 
@@ -130,7 +130,7 @@
 
 
 
-  <title> 'Puppeteer初使用' | Savill blog </title>
+  <title> Puppeteer初使用 | Savill blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -270,7 +270,7 @@
             
             
               
-                'Puppeteer初使用'
+                Puppeteer初使用
               
             
           </h1>
@@ -321,7 +321,36 @@
       
 
       
-        
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>Puppeteer是谷歌官方出品的一个nodejs库，支持调用Chrome的API来直接控制Chrome模拟大部分用户来进行UI Test或者爬虫访问页面来进行收集数据。<br><a id="more"></a></p>
+<h1 id="Puppeteer功能用处"><a href="#Puppeteer功能用处" class="headerlink" title="Puppeteer功能用处"></a>Puppeteer功能用处</h1><p>1.屏幕快照，打印PDF<br>2.高级爬虫，爬取SPA应用，”SSR”服务端渲染<br>3.UI自动化测试，模拟用户页面操作<br>4.页面性能分析</p>
+<h1 id="环境安装"><a href="#环境安装" class="headerlink" title="环境安装"></a>环境安装</h1><p>为了使用async/await，推荐7.6版本以上的Node。<br>初始化项目:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">mkdir demo</div><div class="line">cd demo</div><div class="line">npm init</div><div class="line">npm install --save puppeteer</div></pre></td></tr></table></figure></p>
+<h1 id="puppeteer的使用"><a href="#puppeteer的使用" class="headerlink" title="puppeteer的使用"></a>puppeteer的使用</h1><p>puppeteer通过操作Browser实例来操作浏览器做出相应的反应。</p>
+<ul>
+<li>puppeteer.launch() 启动浏览器实例</li>
+<li>browser.newPage()  创建一个新的页面</li>
+<li>page.goto() 打开进入指定网页</li>
+<li>await page.screenshot() 进行截图</li>
+</ul>
+<p><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md" target="_blank" rel="external">Puppeteer API 链接</a></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> puppeteer = <span class="built_in">require</span>(<span class="string">'puppeteer'</span>);</div><div class="line"><span class="function">(<span class="params"><span class="keyword">async</span> (</span>) =&gt;</span> &#123;</div><div class="line">   </div><div class="line">  <span class="keyword">const</span> browser = <span class="keyword">await</span> puppeteer.launch(&#123;</div><div class="line">  	<span class="comment">// 访问https页面，是否要忽略https错误</span></div><div class="line">    ignoreHTTPSErrors: <span class="literal">false</span>,</div><div class="line">    <span class="comment">// 设置超时时间</span></div><div class="line">    timeout:<span class="number">3000</span>,</div><div class="line">    <span class="comment">// 关闭headless模式，会打开浏览器</span></div><div class="line">    headless: <span class="literal">false</span>,</div><div class="line">    <span class="comment">// 关闭开发者工具，当此值为true时，headless总为false</span></div><div class="line">    devtools:<span class="literal">false</span>,</div><div class="line">    <span class="comment">// 控制操作动作之间的间隔</span></div><div class="line">    slowMo: <span class="number">300</span>,</div><div class="line">  &#125;);</div><div class="line">  <span class="keyword">const</span> page = <span class="keyword">await</span> browser.newPage();</div><div class="line">  <span class="keyword">await</span> page.goto(<span class="string">'https://www.jianshu.com/'</span>);</div><div class="line">  <span class="keyword">await</span> page.screenshot(&#123;</div><div class="line">  	<span class="attr">path</span>: <span class="string">'example.png'</span></div><div class="line">  	&#125;);</div><div class="line">  <span class="keyword">await</span> page.pdf(&#123;<span class="attr">path</span>: <span class="string">'example.pdf'</span>, <span class="attr">format</span>: <span class="string">'A4'</span>&#125;);</div><div class="line"> </div><div class="line">  <span class="keyword">await</span> browser.close();</div><div class="line">&#125;)();</div></pre></td></tr></table></figure>
+<p>page.evaluate()方法中注册回调函数，可以分析当前页面的dom结构，就像在Chrome的DevTools里做的那样，可在浏览器中执行一段 JavaScript 代码。<br>以下例子，是拿到简书首页所有文章的连接和标题：</p>
+<ul>
+<li>page.waitForSelector(选择器) 等待某个DOM节点出现</li>
+<li>page.waitFor(number) 等待时间间隔</li>
+<li>page.waitFor(Function) 等待某个 JavaScript 函数返回 true</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//等待 ID 为 list-container 的节点出现</span></div><div class="line"><span class="keyword">await</span> page.waitForSelector(<span class="string">'#list-container'</span>);</div><div class="line"><span class="comment">//等待时间</span></div><div class="line"><span class="keyword">await</span> page.waitFor(<span class="number">1000</span>);</div><div class="line"><span class="comment">//等待 JavaScript 函数返回 true</span></div><div class="line"><span class="keyword">await</span> page.waitFor(<span class="function"><span class="params">()</span>=&gt;</span> <span class="built_in">document</span>.querySelector(<span class="string">'#list-container'</span>));</div><div class="line"><span class="keyword">const</span> links = <span class="keyword">await</span> page.evaluate(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</div><div class="line">  <span class="keyword">let</span> <span class="keyword">as</span> = <span class="built_in">document</span>.querySelectorAll(<span class="string">'#list-container li .content .title'</span>);</div><div class="line">  <span class="keyword">return</span> [...as].map(<span class="function">(<span class="params">v</span>)=&gt;</span>&#123;</div><div class="line">    <span class="keyword">return</span> &#123;</div><div class="line">      <span class="attr">href</span>:v.href,</div><div class="line">      <span class="attr">title</span>:v.text</div><div class="line">    &#125;</div><div class="line">  &#125;)</div><div class="line">&#125;)</div><div class="line"><span class="built_in">console</span>.log(links);</div></pre></td></tr></table></figure>
+<p>假如我们获取的内容有些是懒加载处理了，直接获取是获取不到的。解决办法就是能够让页面自动从顶部滚动到底部，再进行去获取</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">await</span> page.goto(<span class="string">'https://www.jianshu.com/'</span>);</div><div class="line"><span class="keyword">await</span> autoScroll(page);</div><div class="line">...</div><div class="line">...</div><div class="line">async <span class="function"><span class="keyword">function</span> <span class="title">autoScroll</span>(<span class="params">page</span>)</span>&#123;</div><div class="line">    <span class="keyword">await</span> page.evaluate(<span class="keyword">async</span> () =&gt; &#123;</div><div class="line">        <span class="keyword">await</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</div><div class="line">            <span class="keyword">var</span> totalHeight = <span class="number">0</span>;</div><div class="line">            <span class="keyword">var</span> distance = <span class="number">100</span>;</div><div class="line">            <span class="keyword">var</span> timer = setInterval(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">                <span class="keyword">var</span> scrollHeight = <span class="built_in">document</span>.body.scrollHeight;</div><div class="line">                <span class="built_in">window</span>.scrollBy(<span class="number">0</span>, distance);</div><div class="line">                totalHeight += distance;</div><div class="line"></div><div class="line">                <span class="keyword">if</span>(totalHeight &gt;= scrollHeight)&#123;</div><div class="line">                    clearInterval(timer);</div><div class="line">                    resolve();</div><div class="line">                &#125;</div><div class="line">            &#125;, <span class="number">100</span>);</div><div class="line">        &#125;);</div><div class="line">    &#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="Puppeteer常用操作"><a href="#Puppeteer常用操作" class="headerlink" title="Puppeteer常用操作"></a>Puppeteer常用操作</h1><p><strong>向某个 Input 中输入字符</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">await</span> page.type(<span class="string">'#username'</span>, <span class="string">'savill'</span>);</div></pre></td></tr></table></figure></p>
+<p><strong>点击某个节点</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">await</span> page.click(<span class="string">'#btn-submit'</span>);</div></pre></td></tr></table></figure></p>
+<p><strong>获取某一个节点的某个属性</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> searchValue = <span class="keyword">await</span> page.$<span class="built_in">eval</span>(<span class="string">'#search'</span>, el =&gt; el.value);</div><div class="line"><span class="keyword">const</span> preloadHref = <span class="keyword">await</span> page.$<span class="built_in">eval</span>(<span class="string">'link[rel=preload]'</span>, el =&gt; el.href);</div><div class="line"><span class="keyword">const</span> text = <span class="keyword">await</span> page.$<span class="built_in">eval</span>(<span class="string">'.text'</span>, el =&gt; el.textContent);</div><div class="line"><span class="keyword">const</span> html = <span class="keyword">await</span> page.$<span class="built_in">eval</span>(<span class="string">'.main-container'</span>, e =&gt; e.outerHTML);</div><div class="line">page.$(selector) 与我们常用的 <span class="built_in">document</span>.querySelector(selector) 一致，返回的是一个 ElementHandle 元素句柄</div><div class="line">page.$$(selector) 与我们常用的 <span class="built_in">document</span>.querySelectorAll(selector) 一致，返回的是一个数组</div></pre></td></tr></table></figure></p>
+<p><strong>获取某一类节点的某个属性集合</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> textArray = <span class="keyword">await</span> page.$$<span class="built_in">eval</span>(<span class="string">'.text'</span>, els =&gt; <span class="built_in">Array</span>.from(els).map(<span class="function"><span class="params">el</span>=&gt;</span> el.textContent));</div></pre></td></tr></table></figure></p>
+<p>上述代码将页面中所有类为 text 的节点中的文本拼装为数组放到了 textArray 中。</p>
+<p><strong>等待页面加载完成</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">await</span> page.waitForNavigation(&#123; <span class="attr">waitUntil</span>: <span class="string">"networkidle"</span> &#125;)</div></pre></td></tr></table></figure></p>
+<p><strong>page.emulate()方法来模拟各种移动设备</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">	<span class="keyword">await</span> page.emulate(&#123;</div><div class="line">    <span class="attr">viewport</span>: &#123;</div><div class="line">        <span class="attr">width</span>: <span class="number">375</span>,</div><div class="line">        <span class="attr">height</span>: <span class="number">667</span>,</div><div class="line">        <span class="attr">isMobile</span>: <span class="literal">true</span></div><div class="line">    &#125;,</div><div class="line">    <span class="attr">userAgent</span>: <span class="string">'"Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1"'</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>此外，还有page.hover()用来模拟 mouseover 的操作；page.reload()用来模拟刷新操作；page.title()用来获取网页标题</p>
+
       
     </div>
 
@@ -347,6 +376,12 @@
     </div>
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Nodejs/" rel="tag"># Nodejs</a>
+          
+        </div>
       
 
       
@@ -412,8 +447,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/head.jpg"
@@ -504,6 +548,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Puppeteer功能用处"><span class="nav-number">2.</span> <span class="nav-text">Puppeteer功能用处</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#环境安装"><span class="nav-number">3.</span> <span class="nav-text">环境安装</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#puppeteer的使用"><span class="nav-number">4.</span> <span class="nav-text">puppeteer的使用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Puppeteer常用操作"><span class="nav-number">5.</span> <span class="nav-text">Puppeteer常用操作</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
