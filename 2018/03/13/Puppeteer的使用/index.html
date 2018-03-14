@@ -89,13 +89,13 @@
 
 <meta name="description" content="前言Puppeteer是谷歌官方出品的一个nodejs库，支持调用Chrome的API来直接控制Chrome模拟大部分用户来进行UI Test或者爬虫访问页面来进行收集数据。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Puppeteer初使用">
-<meta property="og:url" content="http://yoursite.com/2018/03/13/Puppeteer初使用/index.html">
+<meta property="og:title" content="Puppeteer的使用">
+<meta property="og:url" content="http://yoursite.com/2018/03/13/Puppeteer的使用/index.html">
 <meta property="og:site_name" content="Savill blog">
 <meta property="og:description" content="前言Puppeteer是谷歌官方出品的一个nodejs库，支持调用Chrome的API来直接控制Chrome模拟大部分用户来进行UI Test或者爬虫访问页面来进行收集数据。">
-<meta property="og:updated_time" content="2018-03-14T06:16:27.430Z">
+<meta property="og:updated_time" content="2018-03-14T06:26:07.244Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Puppeteer初使用">
+<meta name="twitter:title" content="Puppeteer的使用">
 <meta name="twitter:description" content="前言Puppeteer是谷歌官方出品的一个nodejs库，支持调用Chrome的API来直接控制Chrome模拟大部分用户来进行UI Test或者爬虫访问页面来进行收集数据。">
 
 
@@ -124,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/03/13/Puppeteer初使用/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/03/13/Puppeteer的使用/"/>
 
 
 
 
 
-  <title> Puppeteer初使用 | Savill blog </title>
+  <title> Puppeteer的使用 | Savill blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -249,7 +249,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/13/Puppeteer初使用/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/13/Puppeteer的使用/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Savill W">
@@ -270,7 +270,7 @@
             
             
               
-                Puppeteer初使用
+                Puppeteer的使用
               
             
           </h1>
@@ -348,7 +348,7 @@
 <p><strong>获取某一类节点的某个属性集合</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> textArray = <span class="keyword">await</span> page.$$<span class="built_in">eval</span>(<span class="string">'.text'</span>, els =&gt; <span class="built_in">Array</span>.from(els).map(<span class="function"><span class="params">el</span>=&gt;</span> el.textContent));</div></pre></td></tr></table></figure></p>
 <p>上述代码将页面中所有类为 text 的节点中的文本拼装为数组放到了 textArray 中。</p>
 <p><strong>等待页面加载完成</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">await</span> page.waitForNavigation(&#123; <span class="attr">waitUntil</span>: <span class="string">"networkidle"</span> &#125;)</div></pre></td></tr></table></figure></p>
-<p><strong>page.emulate()方法来模拟各种移动设备</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">	<span class="keyword">await</span> page.emulate(&#123;</div><div class="line">    <span class="attr">viewport</span>: &#123;</div><div class="line">        <span class="attr">width</span>: <span class="number">375</span>,</div><div class="line">        <span class="attr">height</span>: <span class="number">667</span>,</div><div class="line">        <span class="attr">isMobile</span>: <span class="literal">true</span></div><div class="line">    &#125;,</div><div class="line">    <span class="attr">userAgent</span>: <span class="string">'"Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1"'</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p><strong>page.emulate()方法来模拟各种移动设备</strong><br>最重要的是userAgent 这个参数<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">await</span> page.emulate(&#123;</div><div class="line">    <span class="attr">viewport</span>: &#123;</div><div class="line">        <span class="attr">width</span>: <span class="number">375</span>,</div><div class="line">        <span class="attr">height</span>: <span class="number">667</span>,</div><div class="line">        <span class="attr">isMobile</span>: <span class="literal">true</span></div><div class="line">    &#125;,</div><div class="line">    <span class="attr">userAgent</span>: <span class="string">'"Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1"'</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
 <p>此外，还有page.hover()用来模拟 mouseover 的操作；page.reload()用来模拟刷新操作；page.title()用来获取网页标题</p>
 
       
