@@ -1,0 +1,776 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="webpack," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="#前言使用webpack从零搭建一个React项目">
+<meta property="og:type" content="article">
+<meta property="og:title" content="webpack4.x 从零构建React项目">
+<meta property="og:url" content="http://yoursite.com/2019/03/20/webpack4-x-从零构建React项目/index.html">
+<meta property="og:site_name" content="Savill blog">
+<meta property="og:description" content="#前言使用webpack从零搭建一个React项目">
+<meta property="og:updated_time" content="2019-03-20T13:54:01.089Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="webpack4.x 从零构建React项目">
+<meta name="twitter:description" content="#前言使用webpack从零搭建一个React项目">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/03/20/webpack4-x-从零构建React项目/"/>
+
+
+
+
+
+  <title> webpack4.x 从零构建React项目 | Savill blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Savill blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/20/webpack4-x-从零构建React项目/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Savill W">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/head.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Savill blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                webpack4.x 从零构建React项目
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-20T21:52:26+08:00">
+                2019-03-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>#前言<br>使用webpack从零搭建一个React项目</p>
+<a id="more"></a>
+<h1 id="npm-init-初始化项目"><a href="#npm-init-初始化项目" class="headerlink" title="npm init 初始化项目"></a>npm init 初始化项目</h1><p>初始化后会生成package.json</p>
+<h1 id="创建项目目录"><a href="#创建项目目录" class="headerlink" title="创建项目目录"></a>创建项目目录</h1><p>根目录先分别创建config、src文件夹，config里存放webpack配置文件，src文件夹里则放置项目代码</p>
+<ol>
+<li>config：<br> webpack.base.conf.js为公用配置；<br> webpack.dev.conf.js为开发环境配置，继承自webpack.base.conf.js；<br> webpack.prod.conf.js为生产环境配置，继承自webpack.base.conf.js。</li>
+<li>src：<br> main.js为项目入口文件；<br> App.js为React项目根组件；<br> components为具体的组件。</li>
+</ol>
+<p>项目根目录再创建个index.html:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1.0"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"X-UA-Compatible"</span> <span class="attr">content</span>=<span class="string">"ie=edge"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">'app'</span>&gt;</span></div><div class="line"></div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<h1 id="配置相关react包"><a href="#配置相关react包" class="headerlink" title="配置相关react包"></a>配置相关react包</h1><p>安装相关react包</p>
+<blockquote>
+<p>npm install react react-dom react-router-dom  –save</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span></div><div class="line"><span class="keyword">import</span> ReactDOM <span class="keyword">from</span> <span class="string">'react-dom'</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">App</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span></span>&#123;</div><div class="line">    render()&#123;</div><div class="line">        <span class="keyword">return</span> (</div><div class="line">            <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></div><div class="line">                <span class="tag">&lt;<span class="name">h2</span>&gt;</span>Hello World<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></div><div class="line">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">        )</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">ReactDOM.render(<span class="xml"><span class="tag">&lt;<span class="name">App</span> /&gt;</span>, document.getElementById('app'));</span></div></pre></td></tr></table></figure>
+<h1 id="安装依赖Babel相关依赖包"><a href="#安装依赖Babel相关依赖包" class="headerlink" title="安装依赖Babel相关依赖包"></a>安装依赖Babel相关依赖包</h1><blockquote>
+<p>npm install  babel-core babel-loader babel-plugin-import babel-preset-latest babel-preset-react babel-preset-stage-0 –save-dev</p>
+</blockquote>
+<ul>
+<li>babel-core : babel 核心包，转译器本身</li>
+<li>babel-loader ： 用作ES6语法</li>
+<li>babel-plugin-import : 支持import写法按需加载</li>
+<li>babel-preset-latest 将包含所有年度的 preset(es2017、es2016、es2015)；</li>
+<li>babel-preset-react ：处理react相关的语法，比如jsx</li>
+</ul>
+<p>根目录下创建 <strong>.babelrc</strong> :<br><figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    <span class="attr">"presets"</span>: [<span class="string">"latest"</span>, <span class="string">"react"</span>, <span class="string">"stage-2"</span>],</div><div class="line">    <span class="attr">"plugins"</span>: []</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h1 id="安装-Sass-和-SCSS-等等相关依赖包"><a href="#安装-Sass-和-SCSS-等等相关依赖包" class="headerlink" title="安装 Sass 和 SCSS 等等相关依赖包"></a>安装 Sass 和 SCSS 等等相关依赖包</h1><blockquote>
+<p>npm install css-loader  node-sass sass-loader style-loader url-loader file-loader   –save-dev </p>
+<ul>
+<li>file-loader  将要加载的文件复制到指定目录，生成请求文件资源url</li>
+<li>url-loader 作用和file-loader差不多 但是在文件大小（单位 byte）低于指定的限制时，可以返回一个 DataURL。</li>
+<li>其他的几个就是css相关的转换规则</li>
+</ul>
+</blockquote>
+<h1 id="安装wbepack相关依赖包"><a href="#安装wbepack相关依赖包" class="headerlink" title="安装wbepack相关依赖包"></a>安装wbepack相关依赖包</h1><blockquote>
+<p>npm install clean-webpack-plugin  html-webpack-plugin url-loader webpack webpack-cli webpack-dev-server webpack-merge、uglifyjs-webpack-plugin  –save-dev </p>
+</blockquote>
+<ul>
+<li>webpack4 需搭配webpack-cli使用</li>
+<li>clean-webpack-plugin  打包前清除文件</li>
+<li>html-webpack-plugin 打包后js文件自动导入html文件中</li>
+<li>webpack-dev-server webpack开发服务器</li>
+<li>webpack-merge 区分开发环境和生产条件</li>
+<li></li>
+</ul>
+<p><strong>webpack.base.conf.js：</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>);</div><div class="line"><span class="keyword">const</span> webpack = <span class="built_in">require</span>(<span class="string">'webpack'</span>);</div><div class="line"><span class="keyword">const</span> HtmlWebpackPlugin = <span class="built_in">require</span>(<span class="string">'html-webpack-plugin'</span>);</div><div class="line"><span class="built_in">module</span>.exports = &#123;</div><div class="line">  <span class="comment">// 入口起点</span></div><div class="line">  entry: &#123;</div><div class="line">    <span class="attr">app</span>: <span class="string">'./src/main.js'</span>,</div><div class="line">  &#125;,</div><div class="line">  <span class="comment">// 输出</span></div><div class="line">  output: &#123;</div><div class="line">    <span class="attr">path</span>: path.resolve(__dirname, <span class="string">'../dist'</span>),</div><div class="line">    <span class="attr">filename</span>: <span class="string">"[name].js"</span>,</div><div class="line">  &#125;,</div><div class="line">  <span class="comment">// 解析</span></div><div class="line">  resolve: &#123;</div><div class="line">    <span class="attr">extensions</span>: [<span class="string">'.ts'</span>, <span class="string">'.tsx'</span>, <span class="string">'.js'</span>, <span class="string">'.json'</span>]</div><div class="line">  &#125;,</div><div class="line">  <span class="comment">// loader</span></div><div class="line">  <span class="built_in">module</span>: &#123;</div><div class="line">    <span class="attr">rules</span>: [</div><div class="line">      &#123;</div><div class="line">        <span class="attr">test</span>: <span class="regexp">/\.js|jsx$/</span>,</div><div class="line">        <span class="attr">exclude</span>: <span class="regexp">/(node_modules|bower_components)/</span>,<span class="comment">// 屏蔽不需要处理的文件（文件夹）（可选）</span></div><div class="line">        loader: <span class="string">'babel-loader'</span></div><div class="line">      &#125;,</div><div class="line">       &#123;</div><div class="line">        <span class="attr">test</span>: <span class="regexp">/\.s(a|c)ss$/</span>,</div><div class="line">        <span class="attr">use</span>: [&#123;</div><div class="line">          <span class="attr">loader</span>: <span class="string">'style-loader'</span></div><div class="line">        &#125;, &#123;</div><div class="line">          <span class="attr">loader</span>: <span class="string">'css-loader'</span></div><div class="line">        &#125;, &#123;</div><div class="line">          <span class="attr">loader</span>: <span class="string">'sass-loader'</span></div><div class="line">        &#125;],</div><div class="line">       &#125;</div><div class="line">    ]</div><div class="line">  &#125;,</div><div class="line">  <span class="comment">// 插件</span></div><div class="line">  plugins: [</div><div class="line">    <span class="keyword">new</span> HtmlWebpackPlugin(&#123;</div><div class="line">      <span class="attr">filename</span>: <span class="string">'index.html'</span>,</div><div class="line">      <span class="attr">template</span>: <span class="string">'index.html'</span>,</div><div class="line">      <span class="attr">inject</span>: <span class="string">'body'</span></div><div class="line">    &#125;)</div><div class="line">  ]</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p><strong>webpack.dev.conf.js：</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> merge = <span class="built_in">require</span>(<span class="string">'webpack-merge'</span>);</div><div class="line"><span class="keyword">const</span> baseWebpackConfig = <span class="built_in">require</span>(<span class="string">'./webpack.base.conf'</span>);</div><div class="line"></div><div class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>);</div><div class="line"><span class="keyword">const</span> webpack = <span class="built_in">require</span>(<span class="string">'webpack'</span>);</div><div class="line"></div><div class="line"><span class="built_in">module</span>.exports = merge(baseWebpackConfig, &#123;</div><div class="line">  <span class="comment">// 模式</span></div><div class="line">  mode: <span class="string">"development"</span>,</div><div class="line">  <span class="comment">// 调试工具</span></div><div class="line">  devtool: <span class="string">'inline-source-map'</span>,</div><div class="line">  <span class="comment">// 开发服务器</span></div><div class="line">  devServer: &#123;</div><div class="line">    <span class="attr">contentBase</span>: <span class="literal">false</span>,<span class="comment">// 默认webpack-dev-server会为根文件夹提供本地服务器，如果想为另外一个目录下的文件提供本地服务器，应该在这里设置其所在目录</span></div><div class="line">    historyApiFallback: <span class="literal">true</span>,<span class="comment">// 在开发单页应用时非常有用，它依赖于HTML5 history API，如果设置为true，所有的跳转将指向index.html</span></div><div class="line">    compress: <span class="literal">true</span>,<span class="comment">// 启用gzip压缩</span></div><div class="line">    inline: <span class="literal">true</span>,<span class="comment">// 设置为true，当源文件改变时会自动刷新页面</span></div><div class="line">    hot: <span class="literal">true</span>,<span class="comment">// 模块热更新，取决于HotModuleReplacementPlugin</span></div><div class="line">    host: <span class="string">'127.0.0.1'</span>,<span class="comment">// 设置默认监听域名，如果省略，默认为“localhost”</span></div><div class="line">    port: <span class="number">8703</span><span class="comment">// 设置默认监听端口，如果省略，默认为“8080”</span></div><div class="line">  &#125;,</div><div class="line">  <span class="comment">// 插件</span></div><div class="line">  plugins: [</div><div class="line">    <span class="comment">// 热更新相关</span></div><div class="line">    <span class="keyword">new</span> webpack.NamedModulesPlugin(),</div><div class="line">    <span class="keyword">new</span> webpack.HotModuleReplacementPlugin()</div><div class="line">  ],</div><div class="line">  <span class="attr">optimization</span>: &#123;</div><div class="line">    <span class="attr">nodeEnv</span>: <span class="string">'development'</span>,</div><div class="line">  &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p><strong>webpack.prod.conf.js</strong><br>可直接继承webpack.base.conf.js<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> merge = <span class="built_in">require</span>(<span class="string">'webpack-merge'</span>);</div><div class="line"><span class="keyword">const</span> baseWebpackConfig = <span class="built_in">require</span>(<span class="string">'./webpack.base.conf'</span>);</div><div class="line"><span class="built_in">module</span>.exports = merge(baseWebpackConfig)</div></pre></td></tr></table></figure></p>
+<p>这样只单一的生成一个app.js文件，<strong>我们需要做代码分离的动作，分离到不同的bundle 中，可以配置按需加载这些文件</strong></p>
+<p><strong>扩展webpack.base.conf.js</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span></div><div class="line"><span class="keyword">const</span> merge = <span class="built_in">require</span>(<span class="string">'webpack-merge'</span>);</div><div class="line"><span class="keyword">const</span> baseWebpackConfig = <span class="built_in">require</span>(<span class="string">'./webpack.base.conf'</span>);</div><div class="line"></div><div class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>);</div><div class="line"><span class="keyword">const</span> webpack = <span class="built_in">require</span>(<span class="string">'webpack'</span>);</div><div class="line"><span class="keyword">const</span> CleanWebpackPlugin = <span class="built_in">require</span>(<span class="string">'clean-webpack-plugin'</span>);</div><div class="line"><span class="keyword">const</span> UglifyJSPlugin = <span class="built_in">require</span>(<span class="string">'uglifyjs-webpack-plugin'</span>);</div><div class="line"></div><div class="line"><span class="built_in">module</span>.exports = merge(baseWebpackConfig, &#123;</div><div class="line">  <span class="comment">// 模式</span></div><div class="line">  mode: <span class="string">"production"</span>,</div><div class="line">  <span class="comment">// 调试工具</span></div><div class="line">  devtool: <span class="string">'#source-map'</span>,</div><div class="line">  <span class="comment">// 输出</span></div><div class="line">  output: &#123;</div><div class="line">    <span class="attr">path</span>: path.resolve(__dirname, <span class="string">'../dist'</span>),</div><div class="line">    <span class="attr">filename</span>: <span class="string">"js/[name].[chunkhash].js"</span>,</div><div class="line">  &#125;,</div><div class="line">  <span class="comment">// 插件</span></div><div class="line">  plugins: [</div><div class="line">    <span class="keyword">new</span> CleanWebpackPlugin([<span class="string">'dist'</span>, <span class="string">'build'</span>], &#123;</div><div class="line">      <span class="attr">root</span>: path.resolve(__dirname, <span class="string">'../'</span>),</div><div class="line">    &#125;),</div><div class="line">    <span class="keyword">new</span> webpack.HashedModuleIdsPlugin(),</div><div class="line">  ],</div><div class="line">  <span class="comment">// 代码分离相关</span></div><div class="line">  optimization: &#123;</div><div class="line">    <span class="attr">nodeEnv</span>: <span class="string">'production'</span>,</div><div class="line">    <span class="attr">minimizer</span>: [<span class="keyword">new</span> UglifyJSPlugin()],</div><div class="line">    <span class="attr">runtimeChunk</span>: &#123;</div><div class="line">      <span class="attr">name</span>: <span class="string">'manifest'</span></div><div class="line">    &#125;,</div><div class="line">    <span class="attr">splitChunks</span>: &#123;</div><div class="line">      <span class="attr">minSize</span>: <span class="number">30000</span>,</div><div class="line">      <span class="attr">minChunks</span>: <span class="number">1</span>,</div><div class="line">      <span class="attr">maxAsyncRequests</span>: <span class="number">5</span>,</div><div class="line">      <span class="attr">maxInitialRequests</span>: <span class="number">3</span>,</div><div class="line">      <span class="attr">name</span>: <span class="literal">false</span>,</div><div class="line">      <span class="attr">cacheGroups</span>: &#123;</div><div class="line">        <span class="attr">vendor</span>: &#123;</div><div class="line">          <span class="attr">test</span>: <span class="regexp">/[\\/]node_modules[\\/]/</span>,</div><div class="line">          <span class="attr">name</span>: <span class="string">'vendor'</span>,</div><div class="line">          <span class="attr">chunks</span>: <span class="string">'initial'</span>,</div><div class="line">        &#125;</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<h1 id="配置执行命令"><a href="#配置执行命令" class="headerlink" title="配置执行命令"></a>配置执行命令</h1><p>package.json中修改scripts属性为<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">"scripts": &#123;</div><div class="line">   "dev": "webpack-dev-server --hot --inline --progress --colors --config config/webpack.dev.conf.js",</div><div class="line">   "start": "npm run dev",</div><div class="line">   "build": "webpack --progress --colors --config config/webpack.prod.conf.js"</div><div class="line"> &#125;</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>npm run dev<br>启动服务，报错，需降低babel-loader版本，降级到7.x.x版本</p>
+</blockquote>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/webpack/" rel="tag"># webpack</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/02/12/react-hoc-高阶组件/" rel="next" title="react-hoc-高阶组件">
+                <i class="fa fa-chevron-left"></i> react-hoc-高阶组件
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/head.jpg"
+               alt="Savill W" />
+          <p class="site-author-name" itemprop="name">Savill W</p>
+           
+              <p class="site-description motion-element" itemprop="description">专注</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">33</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/wangjx0212" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/wang-jie-qian-27" target="_blank" title="Zhihu">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Zhihu
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.jianshu.com/users/f4d99cd19f0a/timeline" target="_blank" title="Jianshu">
+                  
+                    <i class="fa fa-fw fa-joomla"></i>
+                  
+                  Jianshu
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.douban.com/people/49346458/" target="_blank" title="Douban">
+                  
+                    <i class="fa fa-fw fa-dashcube"></i>
+                  
+                  Douban
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#npm-init-初始化项目"><span class="nav-number">1.</span> <span class="nav-text">npm init 初始化项目</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#创建项目目录"><span class="nav-number">2.</span> <span class="nav-text">创建项目目录</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#配置相关react包"><span class="nav-number">3.</span> <span class="nav-text">配置相关react包</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装依赖Babel相关依赖包"><span class="nav-number">4.</span> <span class="nav-text">安装依赖Babel相关依赖包</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装-Sass-和-SCSS-等等相关依赖包"><span class="nav-number">5.</span> <span class="nav-text">安装 Sass 和 SCSS 等等相关依赖包</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装wbepack相关依赖包"><span class="nav-number">6.</span> <span class="nav-text">安装wbepack相关依赖包</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#配置执行命令"><span class="nav-number">7.</span> <span class="nav-text">配置执行命令</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Savill W</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
