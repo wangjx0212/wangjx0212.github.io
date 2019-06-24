@@ -1,0 +1,804 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="javaScript," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="前言学习执行上下文会分别学习：了解数据结构、执行栈、变量对象；">
+<meta property="og:type" content="article">
+<meta property="og:title" content="js进阶[1]-执行上下文">
+<meta property="og:url" content="http://yoursite.com/2019/06/24/js进阶-1-执行上下文/index.html">
+<meta property="og:site_name" content="Savill blog">
+<meta property="og:description" content="前言学习执行上下文会分别学习：了解数据结构、执行栈、变量对象；">
+<meta property="og:image" content="http://yoursite.com/images/blog/js-sxw/stack.jpg">
+<meta property="og:image" content="http://yoursite.com/images/blog/js-sxw/queue.jpg">
+<meta property="og:image" content="http://yoursite.com/images/blog/js-sxw/zxsxw-0.jpg">
+<meta property="og:image" content="http://yoursite.com/./image/bldx-1.jpg">
+<meta property="og:updated_time" content="2019-06-24T02:38:10.817Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="js进阶[1]-执行上下文">
+<meta name="twitter:description" content="前言学习执行上下文会分别学习：了解数据结构、执行栈、变量对象；">
+<meta name="twitter:image" content="http://yoursite.com/images/blog/js-sxw/stack.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/06/24/js进阶-1-执行上下文/"/>
+
+
+
+
+
+  <title> js进阶[1]-执行上下文 | Savill blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Savill blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/24/js进阶-1-执行上下文/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Savill W">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/head.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Savill blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                js进阶[1]-执行上下文
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-24T10:30:32+08:00">
+                2019-06-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>学习执行上下文会分别学习：了解数据结构、执行栈、变量对象；</p>
+<a id="more"></a>
+<h1 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h1><p>常用的三种数据结构：</p>
+<ul>
+<li>栈(stack)；</li>
+<li>堆(heap)；</li>
+<li>队列(queue)。</li>
+</ul>
+<p>执行上下文参考栈的方式进行；</p>
+<h2 id="栈-stack"><a href="#栈-stack" class="headerlink" title="栈(stack)"></a>栈(stack)</h2><p>栈的存取方式“先进后出，后进先出”，如下图：</p>
+<p><img src="/images/blog/js-sxw/stack.jpg" alt="avatar"></p>
+<h2 id="堆-heap"><a href="#堆-heap" class="headerlink" title="堆(heap)"></a>堆(heap)</h2><p>堆数据结构是一种树状结构，堆需要满足两个性质：<br>（1）堆中某个节点的值总是不大于或不小于其父节点的值；<br>（2）堆总是一棵完全二叉树。</p>
+<p>堆的存取是随意的，好比如图书馆书架上的书，虽然按顺序排着，可我们拿取的时候可以根据排序书号书名进行，对应json数据的key-value形式。</p>
+<h2 id="队列-queue"><a href="#队列-queue" class="headerlink" title="队列(queue)"></a>队列(queue)</h2><p>队列只允许一段进队操作，另一段进行出队操作，进队一端为队尾，出队一端为队头：</p>
+<p><img src="/images/blog/js-sxw/queue.jpg" alt="avatar"></p>
+<h1 id="什么是执行上下文"><a href="#什么是执行上下文" class="headerlink" title="什么是执行上下文"></a>什么是执行上下文</h1><p>是当前javascript代码执行时的环境，会形成一个作用域，执行上下文分为3种类型：</p>
+<ul>
+<li>全局环境：js代码执行会首先进入该环境；</li>
+<li>函数环境：每次函数被调用时，会进入该函数的执行上下文环境；</li>
+<li>eval: 不建议使用，不进行讨论；</li>
+</ul>
+<p>js运行的时候必然会产生很多个执行上下文，且js引擎会以栈的方式来进行处理它；</p>
+<p>举个例子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="number">10</span>;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn1</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> b = <span class="number">10</span>;</div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">fn2</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        <span class="keyword">var</span> temp = b;</div><div class="line">        b = a;</div><div class="line">        a = team;</div><div class="line">    &#125;</div><div class="line">    fn2();</div><div class="line">&#125;</div><div class="line">fn1();</div></pre></td></tr></table></figure>
+<p><img src="/images/blog/js-sxw/zxsxw-0.jpg" alt="avatar"></p>
+<p>如上图，整个过程是: ‘进入全局上下文’ -&gt; ‘fn1()入栈’ -&gt; ‘fn2()入栈’ -&gt; ‘fn()2出栈’ -&gt; ‘fn()1出栈’ </p>
+<p><strong>全局上下文在关闭浏览器的时候出栈</strong></p>
+<p><strong>一些总结：</strong></p>
+<ul>
+<li>单线程</li>
+<li>同步执行</li>
+<li>个数没有限制</li>
+<li>每个函数执行时，就会为其建立对应的执行上下文</li>
+</ul>
+<h2 id="执行上下文生命周期"><a href="#执行上下文生命周期" class="headerlink" title="执行上下文生命周期"></a>执行上下文生命周期</h2><p>在javascript中，不可避免会需要声明变量和函数，可js解析是如何找到这些变量和函数的呢，为此我们需要更深入去了解执行上下文。</p>
+<p>执行上下文分为两个阶段：</p>
+<ul>
+<li>创建阶段：<br>  在这一阶段，执行上下文中会分别创建变量对象、建立作用域、确定this指向；</li>
+<li>代码执行阶段：<br>  创建完之后就开始执行代码，这个时候会完成：变量赋值、函数引用、执行其他代码；</li>
+</ul>
+<h3 id="变量对象"><a href="#变量对象" class="headerlink" title="变量对象"></a>变量对象</h3><p>变量对象创建的过程分为以下几种：</p>
+<ol>
+<li>建立arguments对象(如果是函数上下文)；<ul>
+<li>由名称和对应值组成的一个变量对象的属性被创建</li>
+<li>没有实参，属性值为undefined</li>
+</ul>
+</li>
+<li>函数声明<ul>
+<li>由名称和对应值（函数对象(function-object)）组成一个变量对象的属性被创建；</li>
+<li>如果变量对象已经存在相同的名称的属性，则完全替代这个属性</li>
+</ul>
+</li>
+<li>变量声明 <ul>
+<li>由名称和对应值（undefined）组成一个变量对象的属性被创建；</li>
+<li>如果变量名称跟已经声明的形参或者函数名称相同，则该变量跳过不做任何声明</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(fn);   <span class="comment">// 'function fn()&#123;console.log('function fn')'</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'function fn'</span>)</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> fn = <span class="number">10</span></div></pre></td></tr></table></figure>
+<p>上面的执行顺序为：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 函数声明提升</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'function fn'</span>)      </div><div class="line">&#125;</div><div class="line"><span class="comment">// 变量声明提升，但遇到同名的函数名，所以选择跳过 不做undefined 的赋值</span></div><div class="line"><span class="comment">// var fn = undefined</span></div><div class="line"><span class="built_in">console</span>.log(fn)</div><div class="line">fn = <span class="number">10</span>;</div></pre></td></tr></table></figure>
+<p><strong>变量对象创建过程：</strong></p>
+<p><img src="./image/bldx-1.jpg" alt="avatar"></p>
+<p>function的声明优于var,根据这个规则，这里就可以很好的理解了什么叫做变量提升了；<br></p>
+<h2 id="活动对象-activation-object-AO"><a href="#活动对象-activation-object-AO" class="headerlink" title="活动对象(activation object, AO)"></a>活动对象(activation object, AO)</h2><p> 未进入执行阶段，变量对象的属性都是不能访问的，但是进入执行阶段后 ，变量对象变成活动对象，里面的对象都可被访问，这时候开始执行阶段的操作</p>
+<p> <code>变量对象和活动对象的区别，其实是同一个对象，只是处于执行上下文不同的生命周期，只有处于函数调用栈栈顶的执行上下文中的变量对象，才会变为活动对象</code></p>
+<p> 比如：</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params">a</span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span>  b = <span class="number">2</span>;</div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">c</span>(<span class="params"></span>)</span>&#123;</div><div class="line"></div><div class="line">    &#125;;</div><div class="line">   <span class="keyword">var</span> d = <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;&#125;;</div><div class="line">   b = <span class="number">3</span>;</div><div class="line">&#125;</div><div class="line">fn(<span class="number">1</span>);</div></pre></td></tr></table></figure>
+<p> 创建阶段，这个时候的AO是：</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">AO = &#123;</div><div class="line">    <span class="attr">arguments</span>: &#123;</div><div class="line">        <span class="number">0</span>: <span class="number">1</span>,</div><div class="line">        <span class="attr">length</span>: <span class="number">1</span></div><div class="line">    &#125;,</div><div class="line">    <span class="attr">a</span>: <span class="number">1</span>,</div><div class="line">    <span class="attr">b</span>: <span class="literal">undefined</span>,</div><div class="line">    <span class="attr">c</span>: reference to <span class="function"><span class="keyword">function</span> <span class="title">c</span>(<span class="params"></span>)</span>&#123;&#125;,</div><div class="line">    <span class="attr">d</span>: <span class="literal">undefined</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p> 代码执行阶段：<br> <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">AO = &#123;</div><div class="line">    <span class="attr">arguments</span>: &#123;</div><div class="line">        <span class="number">0</span>: <span class="number">1</span>,</div><div class="line">        <span class="attr">length</span>: <span class="number">1</span></div><div class="line">    &#125;,</div><div class="line">    <span class="attr">a</span>: <span class="number">1</span>,</div><div class="line">    <span class="attr">b</span>: <span class="number">3</span>,</div><div class="line">    <span class="attr">c</span>: reference to <span class="function"><span class="keyword">function</span> <span class="title">c</span>(<span class="params"></span>)</span>&#123;&#125;,</div><div class="line">    <span class="attr">d</span>: reference to FunctionExpression <span class="string">"d"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p> 一些总结：</p>
+<ul>
+<li>全局上下文的变量对象初始化的是全局对象；</li>
+<li>函数上下文的变量对象初始化只包括 Arguments 对象；</li>
+<li>创建阶段，会给变量对象添加形参、函数声名、变量声明等；</li>
+<li>执行阶段，会再次对变量赋值；</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/javaScript/" rel="tag"># javaScript</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/21/vue系列之v-model/" rel="next" title="vue系列之v-model">
+                <i class="fa fa-chevron-left"></i> vue系列之v-model
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/head.jpg"
+               alt="Savill W" />
+          <p class="site-author-name" itemprop="name">Savill W</p>
+           
+              <p class="site-description motion-element" itemprop="description">专注</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">35</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/wangjx0212" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/wang-jie-qian-27" target="_blank" title="Zhihu">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Zhihu
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.jianshu.com/users/f4d99cd19f0a/timeline" target="_blank" title="Jianshu">
+                  
+                    <i class="fa fa-fw fa-joomla"></i>
+                  
+                  Jianshu
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.douban.com/people/49346458/" target="_blank" title="Douban">
+                  
+                    <i class="fa fa-fw fa-dashcube"></i>
+                  
+                  Douban
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数据结构"><span class="nav-number">2.</span> <span class="nav-text">数据结构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#栈-stack"><span class="nav-number">2.1.</span> <span class="nav-text">栈(stack)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#堆-heap"><span class="nav-number">2.2.</span> <span class="nav-text">堆(heap)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#队列-queue"><span class="nav-number">2.3.</span> <span class="nav-text">队列(queue)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#什么是执行上下文"><span class="nav-number">3.</span> <span class="nav-text">什么是执行上下文</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#执行上下文生命周期"><span class="nav-number">3.1.</span> <span class="nav-text">执行上下文生命周期</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#变量对象"><span class="nav-number">3.1.1.</span> <span class="nav-text">变量对象</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#活动对象-activation-object-AO"><span class="nav-number">3.2.</span> <span class="nav-text">活动对象(activation object, AO)</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Savill W</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
