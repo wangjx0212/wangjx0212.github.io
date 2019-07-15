@@ -96,8 +96,8 @@
 <meta property="og:image" content="http://yoursite.com/images/blog/js-sxw/stack.jpg">
 <meta property="og:image" content="http://yoursite.com/images/blog/js-sxw/queue.jpg">
 <meta property="og:image" content="http://yoursite.com/images/blog/js-sxw/zxsxw-0.jpg">
-<meta property="og:image" content="http://yoursite.com/./image/bldx-1.jpg">
-<meta property="og:updated_time" content="2019-07-15T02:14:50.233Z">
+<meta property="og:image" content="http://yoursite.com/images/blog/js-sxw/bldx-1.jpg">
+<meta property="og:updated_time" content="2019-07-15T02:20:17.518Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="js进阶[1]-执行上下文">
 <meta name="twitter:description" content="前言学习执行上下文会分别学习：了解数据结构、执行栈和变量对象;">
@@ -388,7 +388,7 @@
 <p>上面的执行顺序为：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 函数声明提升</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'function fn'</span>)      </div><div class="line">&#125;</div><div class="line"><span class="comment">// 变量声明提升，但遇到同名的函数名，所以选择跳过 不做undefined 的赋值</span></div><div class="line"><span class="comment">// var fn = undefined</span></div><div class="line"><span class="built_in">console</span>.log(fn)</div><div class="line">fn = <span class="number">10</span>;</div></pre></td></tr></table></figure>
 <p><strong>变量对象创建过程：</strong></p>
-<p><img src="./image/bldx-1.jpg" alt="avatar"></p>
+<p><img src="/images/blog/js-sxw/bldx-1.jpg" alt="avatar"></p>
 <p>function的声明优于var,根据这个规则，这里就可以很好的理解了什么叫做变量提升了；<br></p>
 <h2 id="活动对象-activation-object-AO"><a href="#活动对象-activation-object-AO" class="headerlink" title="活动对象(activation object, AO)"></a>活动对象(activation object, AO)</h2><p> 未进入执行阶段，变量对象的属性都是不能访问的，但是进入执行阶段后 ，变量对象变成活动对象，里面的对象都可被访问，这时候开始执行阶段的操作</p>
 <p> <code>变量对象和活动对象的区别，其实是同一个对象，只是处于执行上下文不同的生命周期，只有处于函数调用栈栈顶的执行上下文中的变量对象，才会变为活动对象</code></p>
